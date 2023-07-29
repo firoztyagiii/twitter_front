@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap");
+
+:root {
+  --primary-color: #1d9bf0;
+  --primary-color-hover: #178ddc;
+  --border: 1px solid rgba(101, 101, 101, 0.244);
+  --fine-line: rgba(212, 212, 212, 0.244);
+  --white-hover: #f4f4f4;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  /* font-size: 67.5%; */
+}
+
+body {
+}
+
+.heading {
+  font-family: "Kanit", sans-serif;
+}

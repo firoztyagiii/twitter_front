@@ -1,0 +1,14 @@
+.homeFooter {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(24, 138, 138);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}

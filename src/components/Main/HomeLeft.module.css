@@ -1,0 +1,16 @@
+.homeLeft {
+  background-image: url("mainBg.png");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.homeLogoContainer {
+  width: 50%;
+}
+
+.homeLogo {
+  mix-blend-mode: multiply;
+  width: 100%;
+}

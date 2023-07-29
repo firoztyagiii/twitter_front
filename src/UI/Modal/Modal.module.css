@@ -1,0 +1,29 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.067);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalBody {
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+}
+
+.modalBody span svg {
+  font-size: 1.4rem;
+  transition: all 0.1s;
+}
+
+.modalBody span:hover svg {
+  cursor: pointer;
+  background-color: var(--fine-line);
+}

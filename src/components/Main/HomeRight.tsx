@@ -1,7 +1,9 @@
 import { PropsWithChildren } from "react";
+import Modal from "../../UI/Modal/Modal";
 
 import styles from "./HomeRight.module.css";
 import Button from "../../UI/Button/Button";
+import SignInForm from "../SignInForm/SignInForm";
 
 const HomeRight: React.FC<PropsWithChildren> = () => {
   return (
@@ -33,7 +35,14 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
             <p className={styles.homeRightSignInText}>
               Already have an account?
             </p>
-            <Button kind="primary">Sign In</Button>
+            <Modal>
+              <Modal.Button>
+                <Button kind="primary">Sign In</Button>
+              </Modal.Button>
+              <Modal.Window>
+                <SignInForm></SignInForm>
+              </Modal.Window>
+            </Modal>
           </div>
         </div>
       </div>

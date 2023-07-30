@@ -1,4 +1,97 @@
 .menu {
-  background-color: yellow;
   max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  justify-content: space-between;
+}
+
+.menuLogo {
+  width: 2.5rem;
+}
+
+.menuItems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.menuItems li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  width: max-content;
+  border-radius: 9999px;
+  transition: all 0.3s;
+}
+
+.menuItems li:hover {
+  cursor: pointer;
+  background-color: #f3f3f3;
+}
+
+.menuItem {
+  display: grid;
+  grid-template-columns: min-content auto;
+  gap: 1rem;
+  color: black;
+  font-size: 1.8rem;
+  list-style: none;
+  text-decoration: none;
+}
+
+.menuItem p {
+  font-size: 1.5rem;
+}
+
+.menuActive {
+  font-weight: 800;
+}
+
+/* PROFILE */
+
+.menuProfile {
+  /* padding-bottom: 2rem; */
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 2rem;
+  gap: 1rem;
+  border-radius: 9999px;
+}
+
+.menuProfile:hover {
+  background-color: #f3f3f3;
+  cursor: pointer;
+}
+
+.menuProfileContainer {
+  width: 3rem;
+}
+
+.menuProfileContainerLogo {
+  width: 100%;
+  border-radius: 9999px;
+}
+
+.menuProfileDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuProfileName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.menuProfileUserName {
+  color: rgb(114, 114, 114);
+}
+
+.menuProfileMore {
+  margin-left: auto;
+}
+
+.menuProfileMore svg {
+  font-size: 1.5rem;
 }

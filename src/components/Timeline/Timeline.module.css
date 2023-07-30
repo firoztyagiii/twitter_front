@@ -1,5 +1,6 @@
 .timeline {
-  background-color: blueviolet;
   overflow-y: scroll;
   max-height: 100vh;
+  border-left: 1px solid rgba(92, 92, 92, 0.1);
+  border-right: 1px solid rgba(92, 92, 92, 0.1);
 }

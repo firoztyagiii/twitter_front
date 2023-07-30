@@ -4,6 +4,7 @@ import Modal from "../../UI/Modal/Modal";
 import styles from "./HomeRight.module.css";
 import Button from "../../UI/Button/Button";
 import SignInForm from "../SignInForm/SignInForm";
+import SignUpModal from "../SIgnUpModal/SIgnUpModal";
 
 const HomeRight: React.FC<PropsWithChildren> = () => {
   return (
@@ -26,7 +27,14 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
           <div className={styles.divider}>
             {/* <span className={styles.dividerSpan}>or</span> */}
           </div>
-          <Button kind="primary">Create Account</Button>
+          <Modal>
+            <Modal.Button>
+              <Button kind="primary">Create Account</Button>
+            </Modal.Button>
+            <Modal.Window>
+              <SignUpModal></SignUpModal>
+            </Modal.Window>
+          </Modal>
           <p className={styles.homeRightTerms}>
             By signing up, you agree to the Terms of Service and Privacy Policy,
             including Cookie Use.

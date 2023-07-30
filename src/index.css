@@ -6,6 +6,8 @@
   --border: 1px solid rgba(101, 101, 101, 0.244);
   --fine-line: rgba(212, 212, 212, 0.244);
   --white-hover: #f4f4f4;
+  --invalid: #e74c3c;
+  --valid: #2ecc71;
 }
 
 *,
@@ -16,14 +18,18 @@
   box-sizing: border-box;
 }
 
-html {
-  /* font-size: 67.5%; */
-}
-
 body {
   position: relative;
 }
 
 .heading {
   font-family: "Kanit", sans-serif;
+}
+
+.wrongInput {
+  border: 1px solid var(--invalid);
+}
+
+.validInput {
+  border: 1px solid var(--valid);
 }

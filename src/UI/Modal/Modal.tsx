@@ -9,7 +9,6 @@ import styles from "./Modal.module.css";
 import { AiOutlineClose } from "react-icons/ai";
 
 import { createPortal } from "react-dom";
-import { useLocation } from "react-router-dom";
 
 interface modalInterface {
   isShow: boolean;
@@ -22,7 +21,7 @@ export const ModalContext = createContext<modalInterface>({
 });
 
 const Modal: React.FC<PropsWithChildren> = ({ children }) => {
-  const [isShow, setIsShow] = useState<boolean>(true);
+  const [isShow, setIsShow] = useState<boolean>(false);
 
   const showHandler = () => {
     setIsShow((prev) => {

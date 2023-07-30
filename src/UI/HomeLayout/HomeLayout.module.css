@@ -2,5 +2,6 @@
   display: grid;
   grid-template-columns: 55% 1fr;
   grid-template-rows: 95vh 1fr;
+  height: 100vh;
   column-gap: 2rem;
 }

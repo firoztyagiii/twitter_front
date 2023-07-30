@@ -7,3 +7,8 @@
 .input:focus {
   outline: none;
 }
+
+.invalidInput {
+  font-size: 0.9rem;
+  color: var(--invalid);
+}

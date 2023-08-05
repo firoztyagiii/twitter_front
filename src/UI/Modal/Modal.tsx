@@ -38,8 +38,9 @@ const Modal: React.FC<PropsWithChildren> = ({ children }) => {
 
 const Button: React.FC<PropsWithChildren> = ({ children }) => {
   const { showHandler } = useContext(ModalContext);
+
   return cloneElement(children, {
-    onclick: () => {
+    onClick: () => {
       showHandler();
     },
   });

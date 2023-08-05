@@ -6,28 +6,40 @@ import Input from "../../UI/Input/Input";
 import { useMutation } from "react-query";
 import apiLogin from "../../services/apiLogin";
 
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+import { login } from "../../store/slices/authSlice";
+import { useDispatch } from "react-redux";
+
 const SignInForm: React.FC<PropsWithChildren> = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const { mutate, isLoading } = useMutation({
-    mutationFn: (data: { email: string; password: string }) => apiLogin(data),
-    onError: () => {},
-    onSuccess: () => {},
+    mutationFn: () => apiLogin(email, password),
+    onError: (err: Error) => {
+      toast.error(err.message);
+      reset();
+    },
+    onSuccess: (data) => {
+      toast.success(data.message || "Logged in successfully");
+      dispatch(login(data.data));
+      navigate("/web");
+      reset();
+    },
   });
 
-  const clickHandler = async () => {
-    const data = {
-      email,
-      password,
-    };
-    const res = mutate(data);
+  const reset = () => {
+    setEmail("");
+    setPassword("");
   };
 
-  // const reset = () => {
-  //   setEmail("");
-  //   setPassword("");
-  // };
+  const clickHandler = () => {
+    mutate();
+  };
 
   return (
     <div className={styles.signInForm}>
@@ -54,7 +66,7 @@ const SignInForm: React.FC<PropsWithChildren> = () => {
           placeholder="Password"
         ></Input>
         <button className="primaryBtn" onClick={clickHandler}>
-          Login
+          {isLoading ? "Logging In" : "Login"}
         </button>
         <Button kind="secondary">Forgot password?</Button>
       </div>

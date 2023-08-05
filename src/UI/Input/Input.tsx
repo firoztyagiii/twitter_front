@@ -23,6 +23,7 @@ const Input: React.FC<PropsWithChildren<Props>> = ({
       onChange={(e: React.FormEvent<HTMLInputElement>) => {
         onChange(e.target.value);
       }}
+      autoComplete="on"
       type={type}
       placeholder={placeholder}
       className={styles.input}

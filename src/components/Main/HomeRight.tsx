@@ -29,7 +29,8 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
           </div>
           <Modal>
             <Modal.Button>
-              <Button kind="primary">Create Account</Button>
+              {/* <Button kind="primary">Create Account</Button> */}
+              <button className="primaryBtn">Create Account</button>
             </Modal.Button>
             <Modal.Window>
               <SignUpModal></SignUpModal>
@@ -45,7 +46,7 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
             </p>
             <Modal>
               <Modal.Button>
-                <Button kind="primary">Sign In</Button>
+                <button className="primaryBtn">Sign In</button>
               </Modal.Button>
               <Modal.Window>
                 <SignInForm></SignInForm>

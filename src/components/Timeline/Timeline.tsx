@@ -1,5 +1,6 @@
 import styles from "./Timeline.module.css";
 import TweetInput from "../TweetInput/TweetInput";
+import Tweet from "../Tweet/Tweet";
 
 const Timeline = () => {
   // const [activeTab, setActiveTab] = useState("");
@@ -14,6 +15,8 @@ const Timeline = () => {
         </div>
       </div>
       <TweetInput></TweetInput>
+      <Tweet></Tweet>
+      <Tweet></Tweet>
     </div>
   );
 };

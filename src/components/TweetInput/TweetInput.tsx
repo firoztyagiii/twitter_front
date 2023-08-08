@@ -1,6 +1,5 @@
 import { PropsWithChildren } from "react";
 import styles from "./TweetInput.module.css";
-import Button from "../../UI/Button/Button";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { AiOutlineVideoCameraAdd } from "react-icons/ai";
 
@@ -19,7 +18,7 @@ const TweetInput: React.FC<PropsWithChildren> = () => {
           <AiOutlineVideoCameraAdd></AiOutlineVideoCameraAdd>
         </div>
         <div className={styles.tweetButtonContainer}>
-          <Button kind="primary">Post</Button>
+          <button className="primaryBtn">Post</button>
         </div>
       </div>
     </div>

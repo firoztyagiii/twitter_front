@@ -1,0 +1,8 @@
+.getVerified {
+  background-color: var(--hover-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-radius: 10px;
+}

@@ -21,6 +21,7 @@ export const ModalContext = createContext<modalInterface>({
 });
 
 const Modal: React.FC<PropsWithChildren> = ({ children }) => {
+  console.log(children);
   const [isShow, setIsShow] = useState<boolean>(false);
 
   const showHandler = () => {

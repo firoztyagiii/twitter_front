@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap");
-
+/* @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400;500;600&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
 :root {
   --primary-color: #1d9bf0;
   --primary-color-hover: #178ddc;
@@ -8,6 +8,7 @@
   --white-hover: #f4f4f4;
   --invalid: #e74c3c;
   --valid: #2ecc71;
+  --hover-color: #f7f9f9;
 }
 
 *,
@@ -33,6 +34,7 @@ html {
 
 body {
   position: relative;
+  font-family: "Roboto", sans-serif;
 }
 
 .heading {
@@ -62,4 +64,22 @@ body {
 .primaryBtn:hover {
   cursor: pointer;
   background-color: var(--primary-color-hover);
+}
+
+.secondaryBtn {
+  background-color: black;
+  outline: none;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 0.9rem;
+  width: 100%;
+  transition: all 0.3s;
+  width: max-content;
+}
+
+.secondaryBtn:hover {
+  cursor: pointer;
+  background-color: black;
 }

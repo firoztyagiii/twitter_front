@@ -59,10 +59,10 @@
 
 .tweetUsername {
   font-size: 1rem;
-  color: rgb(109, 109, 109);
+  color: var(--light-color-text);
 }
 .tweetTime {
-  color: rgb(109, 109, 109);
+  color: var(--light-color-text);
 }
 
 .tweetContent {

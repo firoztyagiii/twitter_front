@@ -9,6 +9,7 @@
   --invalid: #e74c3c;
   --valid: #2ecc71;
   --hover-color: #f7f9f9;
+  --light-color-text: rgb(109, 109, 109);
 }
 
 *,

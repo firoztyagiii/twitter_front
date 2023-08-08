@@ -2,18 +2,18 @@ import Row from "../UI/Row/Row";
 import WebLayout from "../UI/WebLayout/WebLayout";
 import Explore from "../components/Explore/Explore";
 import Menu from "../components/Menu/Menu";
+import Profile from "../components/Profile/Profile";
 
-const Profile = () => {
+const ProfilePage = () => {
   return (
     <Row>
       <WebLayout>
         <Menu></Menu>
-        {/* <Timeline></Timeline> */}
-        <div>PROFILE</div>
+        <Profile></Profile>
         <Explore></Explore>
       </WebLayout>
     </Row>
   );
 };
 
-export default Profile;
+export default ProfilePage;

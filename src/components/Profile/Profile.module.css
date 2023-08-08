@@ -1,0 +1,39 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--fine-line);
+}
+
+.profileNav {
+  border-bottom: 1px solid var(--fine-line);
+}
+
+.profileNavBackBtn {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1rem;
+}
+
+.profileNavBackBtn svg {
+  color: black;
+}
+
+.profileNavBackBtn svg:hover {
+  cursor: pointer;
+}
+
+.profileNavUserDetail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.profileNavUserName {
+  font-size: 1.3rem;
+}
+
+.profileNavUserTweet {
+  font-size: 0.9rem;
+  color: var(--light-color-text);
+}

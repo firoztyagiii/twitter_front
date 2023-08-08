@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Web from "./pages/Web";
-import Profile from "./pages/Profile";
+import ProfilePage from "./pages/Profile";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,7 +20,10 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="/web" element={<Web></Web>}></Route>
-            <Route path="/profile" element={<Profile></Profile>}></Route>
+            <Route
+              path="/profile"
+              element={<ProfilePage></ProfilePage>}
+            ></Route>
           </Routes>
         </BrowserRouter>
         <ToastContainer

@@ -1,0 +1,40 @@
+.tweet {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--fine-line);
+}
+
+.tweetImg {
+  width: 100%;
+}
+
+.tweetInput {
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  margin-bottom: 2%;
+}
+
+.tweetButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tweetButtonContainer {
+  width: 25%;
+}
+
+.detailsBtn {
+  display: flex;
+  gap: 0.7rem;
+  align-items: center;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+
+.detailsBtn svg:hover {
+  cursor: pointer;
+}

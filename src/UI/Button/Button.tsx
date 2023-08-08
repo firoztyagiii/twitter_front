@@ -5,6 +5,7 @@ import styles from "./Button.module.css";
 interface Props {
   kind: string;
   img?: string;
+  width?: string;
   onClick?: () => void;
 }
 
@@ -12,6 +13,7 @@ const Button: React.FC<PropsWithChildren<Props>> = ({
   children,
   kind,
   img,
+  width,
   onclick,
 }) => {
   if (kind === "primary") {

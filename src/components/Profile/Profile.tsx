@@ -1,3 +1,4 @@
+import EditProfile from "../EditProfile/EditProfile";
 import styles from "./Profile.module.css";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -14,6 +15,7 @@ const Profile = () => {
         </div>
         <div className={styles.profileNavDetial}></div>
       </div>
+      <EditProfile></EditProfile>
     </div>
   );
 };

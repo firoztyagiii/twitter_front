@@ -1,0 +1,66 @@
+.editProfileBannerContainer {
+  position: relative;
+  background-color: antiquewhite;
+  height: 14rem;
+}
+
+.editProfileImgBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+}
+
+.editProfileDetails {
+  padding: 1rem;
+}
+
+.editProfileImg {
+  position: absolute;
+  left: 1.5rem;
+  bottom: -5rem;
+  max-width: 8rem;
+  border-radius: 9999px;
+  border: 4px solid white;
+}
+
+.editProfileDate {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--light-color-text);
+}
+
+.editProfileDate svg {
+  font-size: 1.2rem;
+}
+
+.editProfileFollow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* PFOEL */
+
+.editProfileName {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.editProfileUserName {
+  font-size: 1rem;
+  color: var(--light-color-text);
+  margin-bottom: 1.5rem;
+}
+
+.editProfileFollow {
+  color: var(--light-color-text);
+}
+
+.editProfileFollow a span {
+  font-weight: bold;
+  color: black;
+}

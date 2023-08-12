@@ -1,0 +1,19 @@
+.profileNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid var(--fine-line);
+}
+
+.profileNav a {
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem 0rem;
+  color: var(--light-color-text);
+  border-bottom: 4px solid transparent;
+}
+
+.profileNav a:hover {
+  border-bottom: 4px solid var(--primary-color);
+}

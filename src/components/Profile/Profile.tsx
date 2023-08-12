@@ -1,4 +1,5 @@
 import EditProfile from "../EditProfile/EditProfile";
+import Tweet from "../Tweet/Tweet";
 import styles from "./Profile.module.css";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
@@ -16,6 +17,8 @@ const Profile = () => {
         <div className={styles.profileNavDetial}></div>
       </div>
       <EditProfile></EditProfile>
+      <Tweet></Tweet>
+      <Tweet></Tweet>
     </div>
   );
 };

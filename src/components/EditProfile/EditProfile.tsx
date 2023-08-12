@@ -1,3 +1,4 @@
+import ProfileNav from "../ProfileNav/ProfileNav";
 import styles from "./EditProfile.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 
@@ -31,6 +32,7 @@ const EditProfile = () => {
           </a>
         </div>
       </div>
+      <ProfileNav></ProfileNav>
     </div>
   );
 };

@@ -20,10 +20,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home></Home>}></Route>
             <Route path="/web" element={<Web></Web>}></Route>
-            <Route
-              path="/profile"
-              element={<ProfilePage></ProfilePage>}
-            ></Route>
+            <Route path="/:user" element={<ProfilePage></ProfilePage>}></Route>
           </Routes>
         </BrowserRouter>
         <ToastContainer

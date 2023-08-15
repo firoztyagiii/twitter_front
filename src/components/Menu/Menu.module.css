@@ -53,6 +53,7 @@
 
 .menuProfile {
   /* padding-bottom: 2rem; */
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0.6rem 2rem;
@@ -94,4 +95,35 @@
 
 .menuProfileMore svg {
   font-size: 1.5rem;
+}
+
+.menuProfileLogout {
+  position: absolute;
+  top: -150%;
+  left: 0;
+  width: 100%;
+  /* padding: 1rem; */
+  box-shadow: 4px 4px 13px 0px rgba(0, 0, 0, 0.59);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.menuProfileLogout ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.menuProfileLogout ul li {
+  padding: 1rem 1rem;
+}
+
+.menuProfileLogout ul li:hover {
+  background-color: var(--hover-color);
+}
+
+.menuProfileLogout ul li a {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
 }

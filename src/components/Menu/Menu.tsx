@@ -7,6 +7,8 @@ import { AiOutlineMore } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import styles from "./Menu.module.css";
 import Button from "../../UI/Button/Button";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const USER = {
   name: "Firoz Tyagi",
@@ -15,6 +17,15 @@ const USER = {
 };
 
 const Menu = () => {
+  const [showLogout, setShowLogout] = useState(false);
+  const menuClickHandler = () => {
+    setShowLogout(true);
+  };
+
+  useEffect(() => {
+    // TODO:HANDLE CLICK
+  }, []);
+
   return (
     <div className={styles.menu}>
       <ul className={styles.menuItems}>
@@ -95,7 +106,19 @@ const Menu = () => {
 
         <Button kind="primary">Tweet</Button>
       </ul>
-      <div className={styles.menuProfile}>
+      <div onClick={menuClickHandler} className={styles.menuProfile}>
+        {showLogout && (
+          <div className={styles.menuProfileLogout}>
+            <ul>
+              <li>
+                <Link to="/logout">Logout</Link>
+              </li>
+              <li>
+                <Link to="/logout">Add Account</Link>
+              </li>
+            </ul>
+          </div>
+        )}
         <div className={styles.menuProfileContainer}>
           <img className={styles.menuProfileContainerLogo} src={USER.img}></img>
         </div>

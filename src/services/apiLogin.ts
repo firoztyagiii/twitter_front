@@ -1,8 +1,8 @@
-const HOST = "http://127.0.0.1/api/v1";
+import { HOST } from "../utils/host";
 
 const apiLogin = async (email: string, password: string) => {
   try {
-    const response = await fetch(`${HOST}/user/login`, {
+    const response = await fetch(`${HOST}/api/v1/user/login`, {
       method: "POST",
       headers: {
         "Content-type": "application/json",

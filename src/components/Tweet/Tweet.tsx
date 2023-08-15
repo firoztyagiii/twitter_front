@@ -1,3 +1,4 @@
+import { PropsWithChildren } from "react";
 import styles from "./Tweet.module.css";
 import { AiOutlineComment } from "react-icons/ai";
 import { AiOutlineRetweet } from "react-icons/ai";
@@ -6,7 +7,9 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 
 import { BiStats } from "react-icons/bi";
 
-const Tweet = () => {
+interface Props extends PropsWithChildren, ITweet.Tweet {}
+
+const Tweet: React.FC<Props> = () => {
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>

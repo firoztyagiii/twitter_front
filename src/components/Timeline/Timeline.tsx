@@ -1,9 +1,15 @@
 import styles from "./Timeline.module.css";
 import TweetInput from "../TweetInput/TweetInput";
 import Tweet from "../Tweet/Tweet";
+import { useQuery } from "react-query";
+import apiGetTweets from "../../services/apiGetTweets";
+import Spinner from "../../UI/Spinner/Spinner";
 
 const Timeline = () => {
-  // const [activeTab, setActiveTab] = useState("");
+  const { data, isLoading } = useQuery({
+    queryKey: ["tweets"],
+    queryFn: () => apiGetTweets(),
+  });
 
   return (
     <div className={styles.timeline}>
@@ -15,8 +21,15 @@ const Timeline = () => {
         </div>
       </div>
       <TweetInput></TweetInput>
-      <Tweet></Tweet>
-      <Tweet></Tweet>
+      {isLoading ? (
+        <Spinner></Spinner>
+      ) : (
+        <>
+          {data.data.docs.map((tweet) => {
+            return <Tweet></Tweet>;
+          })}
+        </>
+      )}
     </div>
   );
 };

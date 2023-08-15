@@ -15,8 +15,8 @@ import { useDispatch } from "react-redux";
 const SignInForm: React.FC<PropsWithChildren> = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("test@test.com");
+  const [password, setPassword] = useState("12345678");
 
   const { mutate, isLoading } = useMutation({
     mutationFn: () => apiLogin(email, password),

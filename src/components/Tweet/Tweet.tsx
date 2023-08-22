@@ -26,7 +26,7 @@ const Tweet: React.FC<Props> = ({ data }) => {
         <div className={styles.tweetContainerUser}>
           <p className={styles.tweetName}>{user.name}</p>
           <p className={styles.tweetUsername}>@{user.username}</p>
-          <p className={styles.tweetTime}>15h</p>
+          <p className={styles.tweetTime}>{tweetTime}</p>
         </div>
         <p className={styles.tweetContent}>{data.content}</p>
         <div className={styles.tweetOperations}>

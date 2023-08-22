@@ -21,7 +21,6 @@ export const ModalContext = createContext<modalInterface>({
 });
 
 const Modal: React.FC<PropsWithChildren> = ({ children }) => {
-  console.log(children);
   const [isShow, setIsShow] = useState<boolean>(false);
 
   const showHandler = () => {
@@ -50,7 +49,6 @@ const Window: React.FC<PropsWithChildren> = ({ children }) => {
   const { isShow, showHandler } = useContext(ModalContext);
 
   if (!isShow) return null;
-  console.log(isShow);
   return createPortal(
     <div className={styles.modalOverlay}>
       <div className={styles.modalBody}>

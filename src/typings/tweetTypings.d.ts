@@ -7,4 +7,5 @@ export interface Tweet {
   likes: number;
   replies: number;
   retweet: number;
+  createdAt: Date;
 }

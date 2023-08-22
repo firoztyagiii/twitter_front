@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import apiGetTweets from "../../services/apiGetTweets";
 import { toast } from "react-toastify";
 import Spinner from "../../UI/Spinner/Spinner";
+import { Link } from "react-router-dom";
 
 const Timeline = () => {
   const { isLoading, data } = useQuery({
@@ -18,7 +19,11 @@ const Timeline = () => {
   const tweetData =
     data?.data.docs.length !== 0
       ? data?.data.docs.map((tweet: ITweet.Tweet) => {
-          return <Tweet key={tweet._id} data={tweet}></Tweet>;
+          return (
+            <Link to={`${tweet.user}/tweet/${tweet._id}`}>
+              <Tweet key={tweet._id} data={tweet}></Tweet>
+            </Link>
+          );
         })
       : "No tweets";
 

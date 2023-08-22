@@ -8,23 +8,17 @@ import { NavLink } from "react-router-dom";
 import styles from "./Menu.module.css";
 import Button from "../../UI/Button/Button";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-const USER = {
-  name: "Firoz Tyagi",
-  username: "firoztaygi_19",
-  img: "https://upload.wikimedia.org/wikipedia/commons/2/23/Photo_portrait_PP.jpg",
-};
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 const Menu = () => {
+  const user = useSelector((state: RootState) => state.user);
+
   const [showLogout, setShowLogout] = useState(false);
   const menuClickHandler = () => {
     setShowLogout(true);
   };
-
-  useEffect(() => {
-    // TODO:HANDLE CLICK
-  }, []);
 
   return (
     <div className={styles.menu}>
@@ -120,11 +114,16 @@ const Menu = () => {
           </div>
         )}
         <div className={styles.menuProfileContainer}>
-          <img className={styles.menuProfileContainerLogo} src={USER.img}></img>
+          <img
+            className={styles.menuProfileContainerLogo}
+            src="https://i.pinimg.com/474x/97/2d/b9/972db94857b30b37d4de10e7e5da5ff4.jpg"
+          ></img>
         </div>
         <div className={styles.menuProfileDetails}>
-          <p className={styles.menuProfileName}>{USER.name}</p>
-          <p className={styles.menuProfileUserName}>{`@${USER.username}`}</p>
+          <p className={styles.menuProfileName}>{user.user.name}</p>
+          <p
+            className={styles.menuProfileUserName}
+          >{`@${user.user.username}`}</p>
         </div>
         <div className={styles.menuProfileMore}>
           <AiOutlineMore></AiOutlineMore>

@@ -5,11 +5,11 @@ import Menu from "../components/Menu/Menu";
 import Timeline from "../components/Timeline/Timeline";
 
 const Web = () => {
+  // const user = useSelector((state: RootState) => state.user);
   // const navigate = useNavigate();
-  // const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   // useEffect(() => {
-  //   if (!isLoggedIn) {
+  //   if (!user.isLoggedIn) {
   //     navigate("/");
   //   }
   // }, []);

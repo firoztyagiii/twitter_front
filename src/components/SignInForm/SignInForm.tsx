@@ -8,14 +8,13 @@ import apiLogin from "../../services/apiLogin";
 
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-
-import { login } from "../../store/slices/authSlice";
 import { useDispatch } from "react-redux";
+import { login } from "../../store/slices/userSlice";
 
 const SignInForm: React.FC<PropsWithChildren> = () => {
-  const dispatch = useDispatch();
+  const disptach = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("test@test.com");
+  const [email, setEmail] = useState("firoz@test.com");
   const [password, setPassword] = useState("12345678");
 
   const { mutate, isLoading } = useMutation({
@@ -26,7 +25,7 @@ const SignInForm: React.FC<PropsWithChildren> = () => {
     },
     onSuccess: (data) => {
       toast.success(data.message || "Logged in successfully");
-      dispatch(login(data.data));
+      disptach(login(data.data.user));
       navigate("/web");
       reset();
     },

@@ -6,7 +6,7 @@ import Menu from "../components/Menu/Menu";
 import Profile from "../components/Profile/Profile";
 
 const ProfilePage = () => {
-  const { user } = useParams();
+  // const { user } = useParams();
 
   return (
     <Row>

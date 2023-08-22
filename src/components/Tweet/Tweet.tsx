@@ -6,21 +6,26 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { AiOutlineShareAlt } from "react-icons/ai";
 
 import { BiStats } from "react-icons/bi";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import getTweetTime from "../../utils/getTweetTime";
 
 interface Props extends PropsWithChildren {
   data: ITweet.Tweet;
 }
 
 const Tweet: React.FC<Props> = ({ data }) => {
+  const { user } = useSelector((state: RootState) => state.user);
+  const tweetTime = getTweetTime(data.createdAt);
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
-        <img className={styles.tweetImg} src="logo.png"></img>
+        <img className={styles.tweetImg} src={`${user.image}`}></img>
       </div>
       <div className={styles.tweetContainer}>
         <div className={styles.tweetContainerUser}>
-          <p className={styles.tweetName}>Ajey Nagar</p>
-          <p className={styles.tweetUsername}>@carryminati</p>
+          <p className={styles.tweetName}>{user.name}</p>
+          <p className={styles.tweetUsername}>@{user.username}</p>
           <p className={styles.tweetTime}>15h</p>
         </div>
         <p className={styles.tweetContent}>{data.content}</p>

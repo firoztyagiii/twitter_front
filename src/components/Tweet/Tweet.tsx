@@ -7,9 +7,11 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 
 import { BiStats } from "react-icons/bi";
 
-interface Props extends PropsWithChildren, ITweet.Tweet {}
+interface Props extends PropsWithChildren {
+  data: ITweet.Tweet;
+}
 
-const Tweet: React.FC<Props> = () => {
+const Tweet: React.FC<Props> = ({ data }) => {
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
@@ -21,25 +23,23 @@ const Tweet: React.FC<Props> = () => {
           <p className={styles.tweetUsername}>@carryminati</p>
           <p className={styles.tweetTime}>15h</p>
         </div>
-        <p className={styles.tweetContent}>
-          Naya samaan aane vaala hai guess Karo kya hai
-        </p>
+        <p className={styles.tweetContent}>{data.content}</p>
         <div className={styles.tweetOperations}>
           <div className={styles.tweetOperation}>
             <AiOutlineComment></AiOutlineComment>
-            <p>4522</p>
+            <p>{data.replies}</p>
           </div>
           <div className={styles.tweetOperation}>
             <AiOutlineRetweet></AiOutlineRetweet>
-            <p>120</p>
+            <p>{data.retweet}</p>
           </div>
           <div className={styles.tweetOperation}>
             <AiOutlineHeart></AiOutlineHeart>
-            <p>451K</p>
+            <p>{data.likes}</p>
           </div>
           <div className={styles.tweetOperation}>
             <BiStats></BiStats>
-            <p>51K</p>
+            <p>undefined</p>
           </div>
           <div className={styles.tweetOperation}>
             <AiOutlineShareAlt></AiOutlineShareAlt>

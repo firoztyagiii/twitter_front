@@ -7,7 +7,6 @@ const apiGetUser = async (user: string) => {
       throw new Error("Could not find the user");
     }
     const res = await response.json();
-
     return res;
   } catch (err) {
     throw err;

@@ -6,13 +6,12 @@ import Menu from "../components/Menu/Menu";
 import Profile from "../components/Profile/Profile";
 
 const ProfilePage = () => {
-  // const { user } = useParams();
-
+  const { user } = useParams();
   return (
     <Row>
       <WebLayout>
         <Menu></Menu>
-        <Profile loading={true}></Profile>
+        <Profile userParams={user}></Profile>
         <Explore></Explore>
       </WebLayout>
     </Row>

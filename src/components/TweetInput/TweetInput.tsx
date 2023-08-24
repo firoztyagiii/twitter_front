@@ -7,9 +7,27 @@ import { RootState } from "../../store/store";
 
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { useMutation, useQueryClient } from "react-query";
+import apiPostTweet from "../../services/apiPostTweet";
+import { toast } from "react-toastify";
 
 const TweetInput: React.FC<PropsWithChildren> = () => {
+  const query = useQueryClient();
   const [tweetInput, setTweetInput] = useState("");
+
+  const { isLoading, mutate } = useMutation({
+    mutationFn: (content: string) => {
+      return apiPostTweet(content);
+    },
+    onSuccess: () => {
+      toast.success("Tweeted successfully");
+      query.invalidateQueries("tweets");
+      setTweetInput("");
+    },
+    onError: (err: Error) => {
+      toast.error(err.message);
+    },
+  });
 
   const { user } = useSelector((state: RootState) => state.user);
   const percentage = Math.ceil((tweetInput.length / 150) * 100);
@@ -63,8 +81,14 @@ const TweetInput: React.FC<PropsWithChildren> = () => {
             />
           </div>
 
-          <button disabled={percentage > 99 && true} className="primaryBtn">
-            Post
+          <button
+            onClick={() => {
+              mutate(tweetInput);
+            }}
+            disabled={(percentage > 99 && true) || percentage === 0}
+            className="primaryBtn"
+          >
+            {isLoading ? "Tweeting..." : "Tweet"}
           </button>
         </div>
       </div>

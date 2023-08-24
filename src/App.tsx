@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Web from "./pages/Web";
-import ProfilePage from "./pages/Profile";
+import ProfilePage from "./pages/ProfilePage";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,13 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 
 import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 const App: React.FC = () => {
   return (

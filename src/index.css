@@ -89,3 +89,7 @@ body {
   cursor: pointer;
   background-color: black;
 }
+
+.secondaryBtn:disabled {
+  cursor: not-allowed;
+}

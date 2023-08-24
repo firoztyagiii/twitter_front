@@ -20,8 +20,8 @@ const Timeline = () => {
     data?.data.docs.length !== 0
       ? data?.data.docs.map((tweet: ITweet.Tweet) => {
           return (
-            <Link to={`${tweet.user}/tweet/${tweet._id}`}>
-              <Tweet key={tweet._id} data={tweet}></Tweet>
+            <Link key={tweet._id} to={`${tweet.user}/tweet/${tweet._id}`}>
+              <Tweet data={tweet}></Tweet>
             </Link>
           );
         })

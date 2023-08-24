@@ -8,13 +8,28 @@
 
 .tweetImg {
   width: 100%;
+  border-radius: 50%;
 }
 
-.tweetInput {
+/* .tweetInput {
   border: none;
   outline: none;
   font-size: 1.3rem;
   margin-bottom: 2%;
+  max-width: 10rem;
+  line-clamp: 5;
+  /* line-break: strict; */
+/* }  */
+
+.tweetInput {
+  font-family: inherit;
+  border: none;
+  outline: none;
+  color: inherit;
+  font-size: 1.3rem;
+  line-height: 2rem;
+  height: min-content;
+  /* background-color: blue; */
 }
 
 .tweetButton {
@@ -24,7 +39,23 @@
 }
 
 .tweetButtonContainer {
-  width: 25%;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tweetButtonContainer div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tweetButtonContainer button {
+  padding: 0.8rem 2rem;
+}
+
+.tweetButtonContainer button:disabled {
+  cursor: not-allowed;
 }
 
 .detailsBtn {

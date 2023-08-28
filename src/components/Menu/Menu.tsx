@@ -4,7 +4,7 @@ import { AiOutlineNotification } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineMore } from "react-icons/ai";
 
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Menu.module.css";
 import Button from "../../UI/Button/Button";
 import { Link } from "react-router-dom";
@@ -14,7 +14,6 @@ import { RootState } from "../../store/store";
 
 const Menu = () => {
   const user = useSelector((state: RootState) => state.user);
-  const { userParams } = useParams();
   const [showLogout, setShowLogout] = useState(false);
 
   const menuClickHandler = () => {
@@ -92,9 +91,7 @@ const Menu = () => {
                 return `${styles.menuItem}`;
               }
             }}
-            to={`${
-              user.isLoggedIn ? `/${user.user.username}` : `/${userParams}`
-            }`}
+            to={`/${user.user.username}`}
           >
             <AiOutlineUser></AiOutlineUser>
             <p>Profile</p>
@@ -119,7 +116,7 @@ const Menu = () => {
         <div className={styles.menuProfileContainer}>
           <img
             className={styles.menuProfileContainerLogo}
-            src="https://i.pinimg.com/474x/97/2d/b9/972db94857b30b37d4de10e7e5da5ff4.jpg"
+            src={user.user.image}
           ></img>
         </div>
         <div className={styles.menuProfileDetails}>

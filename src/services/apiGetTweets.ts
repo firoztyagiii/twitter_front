@@ -7,7 +7,8 @@ const apiGetTweets = async () => {
       throw new Error("Something went wrong!");
     }
     const res = await response.json();
-    return res;
+
+    return res.data.docs;
   } catch (err) {
     throw err;
   }

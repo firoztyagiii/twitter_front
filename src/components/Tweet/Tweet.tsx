@@ -16,6 +16,8 @@ interface Props extends PropsWithChildren {
 
 const Tweet: React.FC<Props> = ({ data }) => {
   const { user } = useSelector((state: RootState) => state.user);
+  console.log(user);
+
   const tweetTime = getTweetTime(data.createdAt);
   return (
     <div className={styles.tweet}>

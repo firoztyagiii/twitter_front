@@ -10,8 +10,13 @@ const Auth: React.FC<PropsWithChildren> = ({ children }) => {
   useQuery({
     queryFn: apiAboutMe,
     queryKey: ["user"],
-    onSuccess: (data) => {
-      dispatch(login(data.data));
+
+    onSuccess: (user) => {
+      dispatch(login(user));
+    },
+
+    onError: (err: Error) => {
+      console.log(err, "ERROR FROM AUTH FILE");
     },
   });
 

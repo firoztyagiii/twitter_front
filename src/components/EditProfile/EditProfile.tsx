@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, SyntheticEvent } from "react";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import styles from "./EditProfile.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
@@ -10,12 +10,17 @@ interface Props extends PropsWithChildren {
 }
 
 const EditProfile: React.FC<Props> = ({ err, user }) => {
-  console.log(user);
   const { userParam } = useParams();
+  const imageLoadHandler = (e: SyntheticEvent) => {
+    console.log("loadng");
+  };
+
   return (
     <div className={styles.editProfile}>
       <div className={styles.editProfileBannerContainer}>
         <img
+          onLoadCapture={imageLoadHandler}
+          loading="lazy"
           className={styles.editProfileImg}
           src={
             err

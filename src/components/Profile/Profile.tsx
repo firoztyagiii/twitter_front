@@ -13,7 +13,7 @@ interface Props extends PropsWithChildren {
 const Profile: React.FC<Props> = ({ userParams }) => {
   const { isLoading, data, error } = useQuery({
     queryFn: () => apiGetUser(userParams || ""),
-    queryKey: ["user"],
+    queryKey: ["profile"],
   });
 
   return (
@@ -27,7 +27,7 @@ const Profile: React.FC<Props> = ({ userParams }) => {
               <AiOutlineArrowLeft></AiOutlineArrowLeft>
               <div className={styles.profileNavUserDetail}>
                 <p className={styles.profileNavUserName}>
-                  {error ? "Profile" : data.data.user.name}
+                  {error ? "Profile" : data?.name}
                 </p>
                 <p className={styles.profileNavUserTweet}>
                   {error ? "" : `${5} tweets`}
@@ -36,10 +36,7 @@ const Profile: React.FC<Props> = ({ userParams }) => {
             </div>
             <div className={styles.profileNavDetial}></div>
           </div>
-          <EditProfile
-            err={error as Error}
-            user={data?.data.user}
-          ></EditProfile>
+          <EditProfile err={error as Error} user={data}></EditProfile>
         </>
       )}
       {/* <Tweet></Tweet> */}

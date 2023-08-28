@@ -7,7 +7,7 @@ const apiAboutMe = async () => {
       throw new Error("Something went wrong");
     }
     const user = await response.json();
-    return user;
+    return user.data;
   } catch (err) {
     throw err;
   }

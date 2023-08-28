@@ -11,14 +11,15 @@ const Timeline = () => {
   const { isLoading, data } = useQuery({
     queryFn: apiGetTweets,
     queryKey: ["tweets"],
+
     onError: (err: Error) => {
       toast.error(err.message);
     },
   });
 
   const tweetData =
-    data?.data.docs.length !== 0
-      ? data?.data.docs.map((tweet: ITweet.Tweet) => {
+    data?.length !== 0
+      ? data?.map((tweet: ITweet.Tweet) => {
           return (
             <Link key={tweet._id} to={`${tweet.user}/tweet/${tweet._id}`}>
               <Tweet data={tweet}></Tweet>

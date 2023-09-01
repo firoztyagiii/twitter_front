@@ -1,5 +1,5 @@
 .web {
   display: grid;
-  grid-template-columns: 1fr 50% 1fr;
+  grid-template-columns: 25% 50% 1fr;
   min-height: 100vh;
 }

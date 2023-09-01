@@ -29,7 +29,15 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/web" element={<Web></Web>}></Route>
-              <Route path="/settings" element={<Settings></Settings>}></Route>
+              <Route path="/settings" element={<Settings></Settings>}>
+                <Route path="account" element={<p>account</p>}></Route>
+                <Route path="privacy" element={<p>privacy</p>}></Route>
+                <Route path="security" element={<p>security</p>}></Route>
+                <Route
+                  path="notification"
+                  element={<p>notification</p>}
+                ></Route>
+              </Route>
               <Route path="/:user" element={<ProfilePage></ProfilePage>}>
                 <Route path="posts" element={<p>tweets</p>}></Route>
                 <Route path="replies" element={<p>replies</p>}></Route>

@@ -1,0 +1,5 @@
+.settingsLayout {
+  display: grid;
+  grid-template-columns: 25% 35% 1fr;
+  min-height: 100vh;
+}

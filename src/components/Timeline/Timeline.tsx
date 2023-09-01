@@ -2,15 +2,15 @@ import styles from "./Timeline.module.css";
 import TweetInput from "../TweetInput/TweetInput";
 import Tweet from "../Tweet/Tweet";
 import { useQuery } from "react-query";
-import apiGetTweets from "../../services/apiGetTweets";
 import { toast } from "react-toastify";
 import Spinner from "../../UI/Spinner/Spinner";
 import { Link } from "react-router-dom";
+import apiGetTimeline from "../../services/apiGetTimeline";
 
 const Timeline = () => {
   const { isLoading, data } = useQuery({
-    queryFn: apiGetTweets,
-    queryKey: ["tweets"],
+    queryFn: apiGetTimeline,
+    queryKey: ["timeline"],
 
     onError: (err: Error) => {
       toast.error(err.message);
@@ -21,7 +21,7 @@ const Timeline = () => {
     data?.length !== 0
       ? data?.map((tweet: ITweet.Tweet) => {
           return (
-            <Link key={tweet._id} to={`${tweet.user}/tweet/${tweet._id}`}>
+            <Link key={tweet._id} to={`${tweet.user._id}/tweet/${tweet._id}`}>
               <Tweet data={tweet}></Tweet>
             </Link>
           );

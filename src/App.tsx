@@ -11,6 +11,7 @@ import store from "./store/store";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import Auth from "./components/Auth/Auth";
+import Settings from "./pages/Settings";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -28,10 +29,13 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/web" element={<Web></Web>}></Route>
-              <Route
-                path="/:user"
-                element={<ProfilePage></ProfilePage>}
-              ></Route>
+              <Route path="/settings" element={<Settings></Settings>}></Route>
+              <Route path="/:user" element={<ProfilePage></ProfilePage>}>
+                <Route path="posts" element={<p>tweets</p>}></Route>
+                <Route path="replies" element={<p>replies</p>}></Route>
+                <Route path="media" element={<p>media</p>}></Route>
+                <Route path="likes" element={<p>likes</p>}></Route>
+              </Route>
             </Routes>
           </BrowserRouter>
         </Auth>

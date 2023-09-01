@@ -5,6 +5,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 import { useQuery } from "react-query";
 import apiGetUser from "../../services/apiGetUser";
 import Spinner from "../../UI/Spinner/Spinner";
+import { Outlet } from "react-router-dom";
 
 interface Props extends PropsWithChildren {
   userParams: string | undefined;
@@ -40,6 +41,7 @@ const Profile: React.FC<Props> = ({ userParams }) => {
         </>
       )}
       {/* <Tweet></Tweet> */}
+      <Outlet></Outlet>
     </div>
   );
 };

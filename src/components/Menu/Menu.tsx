@@ -3,6 +3,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineNotification } from "react-icons/ai";
 import { AiOutlineUser } from "react-icons/ai";
 import { AiOutlineMore } from "react-icons/ai";
+import { AiOutlineSetting } from "react-icons/ai";
 
 import { NavLink } from "react-router-dom";
 import styles from "./Menu.module.css";
@@ -80,6 +81,21 @@ const Menu = () => {
           >
             <AiOutlineNotification></AiOutlineNotification>
             <p>Notification</p>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            className={({ isActive }) => {
+              if (isActive) {
+                return `${styles.menuItem} ${styles.menuActive}`;
+              } else {
+                return `${styles.menuItem}`;
+              }
+            }}
+            to="/settings"
+          >
+            <AiOutlineSetting></AiOutlineSetting>
+            <p>Settings</p>
           </NavLink>
         </li>
         <li>

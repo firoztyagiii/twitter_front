@@ -7,6 +7,7 @@ import Profile from "../components/Profile/Profile";
 
 const ProfilePage = () => {
   const { user } = useParams();
+
   return (
     <Row>
       <WebLayout>

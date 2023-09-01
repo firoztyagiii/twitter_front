@@ -12,8 +12,13 @@
   padding: 1rem 0rem;
   color: var(--light-color-text);
   border-bottom: 4px solid transparent;
+  transition: all 0.2s;
 }
 
-.profileNav a:hover {
+/* .profileNav a:hover {
   border-bottom: 4px solid var(--primary-color);
+} */
+
+:global(.activeNavLink) {
+  border-bottom: 4px solid var(--primary-color) !important;
 }

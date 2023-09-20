@@ -12,6 +12,7 @@ import store from "./store/store";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Auth from "./components/Auth/Auth";
 import Settings from "./pages/Settings";
+import YourAccount from "./components/SettingsOptions/YourAccount/YourAccount";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -30,7 +31,10 @@ const App: React.FC = () => {
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/web" element={<Web></Web>}></Route>
               <Route path="/settings" element={<Settings></Settings>}>
-                <Route path="account" element={<p>account</p>}></Route>
+                <Route
+                  path="account"
+                  element={<YourAccount></YourAccount>}
+                ></Route>
                 <Route path="privacy" element={<p>privacy</p>}></Route>
                 <Route path="security" element={<p>security</p>}></Route>
                 <Route

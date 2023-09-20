@@ -1,0 +1,54 @@
+.yourAccount {
+  display: flex;
+  flex-direction: column;
+}
+
+.yourAccount h2 {
+  padding: 2rem;
+}
+
+.yourAccountPara {
+  margin-bottom: 2rem;
+  padding: 0rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.yourAccountLink {
+  /* display: gr;
+  align-items: center;
+  justify-content: space-evenly; */
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem;
+  align-items: center;
+  padding: 1rem 0rem;
+  color: var(--light-color-text);
+}
+
+.yourAccountLink span {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.yourAccountLink:hover {
+  cursor: pointer;
+  background-color: var(--fine-line);
+}
+
+.yourAcoountLinkText {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.yourAccountTextHead {
+  font-size: 1rem;
+  color: rgb(42, 42, 42);
+  margin-bottom: 0.4rem;
+}
+
+.yourAccountTextPara {
+  font-size: 0.8rem;
+}

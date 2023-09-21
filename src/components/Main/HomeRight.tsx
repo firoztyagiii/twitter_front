@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import Modal from "../../UI/Modal/Modal";
 
+import Modal from "../../UI/Modal/Modal";
 import styles from "./HomeRight.module.css";
 import Button from "../../UI/Button/Button";
 import SignInForm from "../SignInForm/SignInForm";
@@ -24,12 +24,9 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
           <Button kind="login" img="appleLogo.png">
             Sign up with Apple
           </Button>
-          <div className={styles.divider}>
-            {/* <span className={styles.dividerSpan}>or</span> */}
-          </div>
+          <div className={styles.divider}></div>
           <Modal>
             <Modal.Button>
-              {/* <Button kind="primary">Create Account</Button> */}
               <button className="primaryBtn">Create Account</button>
             </Modal.Button>
             <Modal.Window>

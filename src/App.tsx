@@ -1,19 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { Provider } from "react-redux";
+import { QueryClient, QueryClientProvider } from "react-query";
+import "react-toastify/dist/ReactToastify.css";
+
+import store from "./store/store";
 import Home from "./pages/Home";
 import Web from "./pages/Web";
 import ProfilePage from "./pages/ProfilePage";
-
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-import { Provider } from "react-redux";
-import store from "./store/store";
-
-import { QueryClient, QueryClientProvider } from "react-query";
 import Auth from "./components/Auth/Auth";
 import Settings from "./pages/Settings";
 import YourAccount from "./components/SettingsOptions/YourAccount/YourAccount";
 import Security from "./components/SettingsOptions/Security/Security";
+import Timeline from "./components/Timeline/Timeline";
+import TweetInfo from "./components/TweetInfo/TweetInfo";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -30,7 +31,13 @@ const App: React.FC = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
-              <Route path="/web" element={<Web></Web>}></Route>
+              <Route path="/web" element={<Web></Web>}>
+                <Route index element={<Timeline></Timeline>}></Route>
+                <Route
+                  path=":username/tweet/:tweetId"
+                  element={<TweetInfo></TweetInfo>}
+                ></Route>
+              </Route>
               <Route path="/settings" element={<Settings></Settings>}>
                 <Route
                   path="account"

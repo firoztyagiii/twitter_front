@@ -21,7 +21,10 @@ const Timeline = () => {
     data?.length !== 0
       ? data?.map((tweet: ITweet.Tweet) => {
           return (
-            <Link key={tweet._id} to={`${tweet.user._id}/tweet/${tweet._id}`}>
+            <Link
+              key={tweet._id}
+              to={`${tweet.user.username}/tweet/${tweet._id}`}
+            >
               <Tweet data={tweet}></Tweet>
             </Link>
           );

@@ -1,0 +1,59 @@
+.security {
+  display: flex;
+  flex-direction: column;
+}
+
+.securityHeading {
+  padding: 2rem;
+}
+
+.securityPara {
+  margin-bottom: 2rem;
+  padding: 0rem 2rem;
+  font-size: 0.8rem;
+  font-weight: 100;
+}
+
+.securityLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.securityLink {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1rem;
+  color: var(--light-color-text);
+}
+
+.securityCheckbox {
+  position: relative;
+  width: 5rem;
+  padding: 1rem;
+  appearance: none;
+  border-radius: 9999px;
+  background-color: var(--fine-line);
+}
+
+.securityCheckbox:hover {
+  cursor: pointer;
+}
+
+.securityCheckbox::before {
+  content: "";
+  transition: all 0.2s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2rem;
+  height: 100%;
+  border-radius: 9999px;
+  transform: scale(1.1);
+  background-color: var(--invalid);
+}
+
+.securityCheckbox:checked::before {
+  left: 65%;
+  background-color: var(--valid);
+}

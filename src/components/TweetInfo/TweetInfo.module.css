@@ -1,0 +1,99 @@
+.tweetInfo {
+  position: relative;
+  border-left: 1px solid rgba(92, 92, 92, 0.1);
+  border-right: 1px solid rgba(92, 92, 92, 0.1);
+}
+
+.tweetInfoBack {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.tweetInfoBack span {
+  padding: 0.8rem 0.9rem;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.tweetInfoBack span:hover {
+  cursor: pointer;
+  background-color: var(--fine-line);
+}
+
+.tweetInfoUserContent {
+  padding: 0rem 1rem;
+}
+
+.tweetInfoUserContentImg {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.tweetInfoUserContentImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9999px;
+}
+
+.tweetInfoUserContentProfile {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.tweetInfoName {
+  font-weight: bold;
+}
+
+.tweetInfoUserName {
+  color: var(--light-color-text);
+}
+
+.tweetInfoContentText {
+  margin-top: 1rem;
+  padding: 1rem 0rem;
+  color: rgb(69, 69, 69);
+  line-height: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.tweetInfoContentTime {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.tweetInfoUserTweetTime {
+  color: var(--light-color-text);
+}
+
+.tweetInfoContentTime span {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.view {
+  color: var(--light-color-text);
+}
+
+.tweetInfoOpertions {
+  display: flex;
+  align-items: center;
+  color: var(--light-color-text);
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.tweetInfoOpertion {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tweetInfoOpertion svg {
+  font-size: 1.4rem;
+}
+.tweetInfoOperationCount {
+  font-size: 0.9rem;
+}

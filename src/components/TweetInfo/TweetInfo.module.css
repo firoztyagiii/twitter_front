@@ -11,13 +11,13 @@
   padding: 0.5rem 1rem;
 }
 
-.tweetInfoBack span {
+.tweetInfoBack a {
   padding: 0.8rem 0.9rem;
   border-radius: 9999px;
   transition: all 0.2s;
 }
 
-.tweetInfoBack span:hover {
+.tweetInfoBack a:hover {
   cursor: pointer;
   background-color: var(--fine-line);
 }
@@ -45,6 +45,10 @@
 
 .tweetInfoName {
   font-weight: bold;
+}
+
+.tweetInfoName:hover {
+  text-decoration: underline;
 }
 
 .tweetInfoUserName {
@@ -83,6 +87,9 @@
   color: var(--light-color-text);
   justify-content: space-between;
   margin-top: 1.5rem;
+  padding: 0.4rem 0rem;
+  border-top: 1px solid rgba(92, 92, 92, 0.1);
+  border-bottom: 1px solid rgba(92, 92, 92, 0.1);
 }
 
 .tweetInfoOpertion {
@@ -91,9 +98,18 @@
   gap: 0.5rem;
 }
 
+.tweetInfoOpertion:hover {
+  cursor: pointer;
+  background-color: aquamarine;
+}
+
 .tweetInfoOpertion svg {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 .tweetInfoOperationCount {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+}
+
+.tweetOperationComment {
+  font-size: 6rem;
 }

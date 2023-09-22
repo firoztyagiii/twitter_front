@@ -11,6 +11,7 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 
 import { GoBookmark } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const TweetInfo = () => {
   const { tweetId } = useParams();
@@ -28,9 +29,9 @@ const TweetInfo = () => {
       {!isLoading && data && (
         <div className={styles.tweetInfoUser}>
           <div className={styles.tweetInfoBack}>
-            <span>
+            <Link to="..">
               <AiOutlineArrowLeft></AiOutlineArrowLeft>
-            </span>
+            </Link>
             <p>Post</p>
           </div>
           <div className={styles.tweetInfoUserContent}>
@@ -39,8 +40,13 @@ const TweetInfo = () => {
                 <img src={data.user.image} alt="" />
               </div>
               <div>
-                <p className={styles.tweetInfoName}>Tristan tate</p>
-                <p className={styles.tweetInfoUserName}>@tristantate</p>
+                <a
+                  href={`/${data.user.username}`}
+                  className={styles.tweetInfoName}
+                >
+                  {data.user.name}
+                </a>
+                <p className={styles.tweetInfoUserName}>@{data.user.name}</p>
               </div>
             </div>
             <p className={styles.tweetInfoContentText}>
@@ -58,19 +64,19 @@ const TweetInfo = () => {
             <div className={styles.tweetInfoOpertions}>
               <div className={styles.tweetInfoOpertion}>
                 <AiOutlineComment></AiOutlineComment>
-                <p className={styles.tweetInfoOperationCount}>98</p>
+                <p className={styles.tweetInfoOperationCount}>{data.replies}</p>
               </div>
               <div className={styles.tweetInfoOpertion}>
                 <AiOutlineRetweet></AiOutlineRetweet>
-                <p className={styles.tweetInfoOperationCount}>122</p>
+                <p className={styles.tweetInfoOperationCount}>{data.retweet}</p>
               </div>
               <div className={styles.tweetInfoOpertion}>
                 <AiOutlineHeart></AiOutlineHeart>
-                <p className={styles.tweetInfoOperationCount}>122</p>
+                <p className={styles.tweetInfoOperationCount}>{data.likes}</p>
               </div>
               <div className={styles.tweetInfoOpertion}>
                 <GoBookmark></GoBookmark>
-                <p className={styles.tweetInfoOperationCount}>122</p>
+                <p className={styles.tweetInfoOperationCount}></p>
               </div>
               <div className={styles.tweetInfoOpertion}>
                 <AiOutlineShareAlt></AiOutlineShareAlt>

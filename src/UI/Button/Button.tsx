@@ -6,7 +6,7 @@ interface Props {
   kind: string;
   img?: string;
   width?: string;
-  onClick?: () => void;
+  onclick?: () => void;
 }
 
 const Button: React.FC<PropsWithChildren<Props>> = ({

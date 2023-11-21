@@ -2,15 +2,37 @@ import styles from "./SignUpModal.module.css";
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 import React, { useState } from "react";
+import apiSignup from "../../services/apiSignup";
+import { useMutation } from "react-query";
+import classes from "../../UI/Button/Button.module.css";
+import { toast } from "react-toastify";
 
 const SignUpModal = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState("aydenjack1@gmail.com");
+  const [password, setPassword] = useState("123456789");
+  const [confirmPassword, setConfirmPassword] = useState("123456789");
+  const [username, setUsername] = useState("aydenjack");
+  const [name, setName] = useState("ayden");
+
+  const mutationQuery = useMutation({
+    mutationFn: async (data: IUser.LoginUser) => {
+      return apiSignup(data);
+    },
+    onError: () => {},
+    onSuccess: (data) => {
+      toast.error(data.message);
+    },
+  });
 
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email, password, confirmPassword);
+    mutationQuery.mutate({
+      name,
+      email,
+      password,
+      confirmPassword,
+      username,
+    });
   };
 
   return (
@@ -25,7 +47,19 @@ const SignUpModal = () => {
           Sign up with Apple
         </Button>
         <div className={styles.divider}></div>
-        <form onSubmit={submitHandler} className={styles.signUpForm}>
+        <form className={styles.signUpForm}>
+          <Input
+            value={name}
+            onChange={setName}
+            type="text"
+            placeholder="Name"
+          ></Input>
+          <Input
+            value={username}
+            onChange={setUsername}
+            type="text"
+            placeholder="Username"
+          ></Input>
           <Input
             value={email}
             onChange={setEmail}
@@ -44,7 +78,9 @@ const SignUpModal = () => {
             type="password"
             placeholder="Password"
           ></Input>
-          <Button kind="primary">Sign Up</Button>
+          <button className={classes.primaryBtn} onClick={submitHandler}>
+            Sign Up
+          </button>
         </form>
         {/* <Button kind="secondary">Forgot password?</Button> */}
       </div>

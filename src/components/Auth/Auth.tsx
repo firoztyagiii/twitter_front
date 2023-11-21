@@ -14,10 +14,6 @@ const Auth: React.FC<PropsWithChildren> = ({ children }) => {
     onSuccess: (user) => {
       dispatch(login(user));
     },
-
-    onError: (err: Error) => {
-      console.log(err, "ERROR FROM AUTH FILE");
-    },
   });
 
   return children;

@@ -6,6 +6,14 @@ export interface User {
   image: string;
 }
 
+export interface LoginUser {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  username: string;
+}
+
 export interface InitialUserState {
   isLoggedIn: boolean;
   user: User;

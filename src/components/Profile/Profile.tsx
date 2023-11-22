@@ -31,7 +31,7 @@ const Profile: React.FC<Props> = ({ userParams }) => {
                   {error ? "Profile" : data?.name}
                 </p>
                 <p className={styles.profileNavUserTweet}>
-                  {error ? "" : `${5} tweets`}
+                  {error ? "" : `${4} tweets`}
                 </p>
               </div>
             </div>

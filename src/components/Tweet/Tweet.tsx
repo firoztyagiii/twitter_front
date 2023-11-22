@@ -8,6 +8,7 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import { BiStats } from "react-icons/bi";
 
 import getTweetTime from "../../utils/getTweetTime";
+import { useSelector } from "react-redux";
 
 interface Props extends PropsWithChildren {
   data: ITweet.Tweet;
@@ -15,10 +16,14 @@ interface Props extends PropsWithChildren {
 
 const Tweet: React.FC<Props> = ({ data }) => {
   const tweetTime = getTweetTime(data.createdAt);
+  const userImg = useSelector((state) => state.user.user.image);
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
-        <img className={styles.tweetImg} src={`${data.user.image}`}></img>
+        <img
+          className={styles.tweetImg}
+          src={`${data.user.image || userImg}`}
+        ></img>
       </div>
       <div className={styles.tweetContainer}>
         <div className={styles.tweetContainerUser}>

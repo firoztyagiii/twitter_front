@@ -12,8 +12,8 @@ import Auth from "./components/Auth/Auth";
 import Settings from "./pages/Settings";
 import YourAccount from "./components/SettingsOptions/YourAccount/YourAccount";
 import Security from "./components/SettingsOptions/Security/Security";
-import Timeline from "./components/Timeline/Timeline";
 import TweetInfo from "./components/TweetInfo/TweetInfo";
+import UserTweet from "./components/Profile/UserTweet/UserTweet";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +32,6 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
               <Route path="/web" element={<Web></Web>}>
-                <Route index element={<Timeline></Timeline>}></Route>
                 <Route
                   path=":username/tweet/:tweetId"
                   element={<TweetInfo></TweetInfo>}
@@ -51,7 +50,7 @@ const App: React.FC = () => {
                 ></Route>
               </Route>
               <Route path="/:user" element={<ProfilePage></ProfilePage>}>
-                <Route path="posts" element={<p>tweets</p>}></Route>
+                <Route path="posts" element={<UserTweet></UserTweet>}></Route>
                 <Route path="replies" element={<p>replies</p>}></Route>
                 <Route path="media" element={<p>media</p>}></Route>
                 <Route path="likes" element={<p>likes</p>}></Route>

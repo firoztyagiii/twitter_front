@@ -54,17 +54,17 @@ body {
 .validInput {
   border: 1px solid var(--valid);
 }
-
 .primaryBtn {
   background-color: var(--primary-color);
   outline: none;
   border: none;
-  padding: 0.8rem 0rem;
+  padding: 0.8rem 2rem;
   border-radius: 9999px;
   color: #fff;
   font-size: 0.9rem;
   width: 100%;
   transition: all 0.3s;
+  width: max-content;
 }
 
 .primaryBtn:hover {

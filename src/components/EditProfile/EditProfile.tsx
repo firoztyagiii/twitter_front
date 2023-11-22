@@ -1,8 +1,12 @@
-import { PropsWithChildren, SyntheticEvent } from "react";
+import { PropsWithChildren } from "react";
 import ProfileNav from "../ProfileNav/ProfileNav";
 import styles from "./EditProfile.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useMutation } from "react-query";
+import apiFollowAdd from "../../services/apiFollow";
+import { toast } from "react-toastify";
 
 interface Props extends PropsWithChildren {
   err: Error;
@@ -11,15 +15,30 @@ interface Props extends PropsWithChildren {
 
 const EditProfile: React.FC<Props> = ({ err, user }) => {
   const { userParam } = useParams();
-  const imageLoadHandler = (e: SyntheticEvent) => {
-    console.log("loadng");
+  const loggedInUserId = useSelector((state) => state.user.user._id);
+
+  const mutateQuery = useMutation({
+    mutationFn: async (data: Follow.IFollow) => {
+      return apiFollowAdd(data);
+    },
+    onSuccess: (data) => {
+      if (data.status === "success") {
+        toast.success("You have followed the user...");
+      }
+    },
+  });
+  1;
+  const followHandler = () => {
+    mutateQuery.mutate({
+      userId: loggedInUserId,
+      followId: user._id.toString(),
+    });
   };
 
   return (
     <div className={styles.editProfile}>
       <div className={styles.editProfileBannerContainer}>
         <img
-          onLoadCapture={imageLoadHandler}
           loading="lazy"
           className={styles.editProfileImg}
           src={
@@ -32,9 +51,19 @@ const EditProfile: React.FC<Props> = ({ err, user }) => {
       </div>
       <div className={styles.editProfileImgBtn}>
         <div></div>
-        <button disabled={err && true} className="secondaryBtn">
-          Edit Profile
-        </button>
+        {loggedInUserId === user._id ? (
+          <button disabled={err && true} className="secondaryBtn">
+            Edit Profile
+          </button>
+        ) : (
+          <button
+            onClick={followHandler}
+            disabled={err && true}
+            className="primaryBtn"
+          >
+            Follow Me
+          </button>
+        )}
       </div>
       <div className={styles.editProfileDetails}>
         <p className={styles.editProfileName}>{err ? "Profile" : user.name}</p>

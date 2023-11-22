@@ -15,13 +15,11 @@ import { Link } from "react-router-dom";
 
 const TweetInfo = () => {
   const { tweetId } = useParams();
-
+  console.log(tweetId);
   const { isLoading, data } = useQuery({
     queryFn: async () => apiTweetInfo(tweetId),
     queryKey: ["tweetInfo"],
   });
-
-  console.log(data);
 
   return (
     <div className={styles.tweetInfo}>

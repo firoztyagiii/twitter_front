@@ -14,13 +14,22 @@ const SignUpModal = () => {
   const [username, setUsername] = useState("aydenjack");
   const [name, setName] = useState("ayden");
 
+  const reset = () => {
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setUsername("");
+    setName("");
+  };
+
   const mutationQuery = useMutation({
     mutationFn: async (data: IUser.LoginUser) => {
       return apiSignup(data);
     },
     onError: () => {},
-    onSuccess: (data) => {
-      toast.error(data.message);
+    onSuccess: async () => {
+      toast.success("Account created successfully, you can login now...");
+      reset();
     },
   });
 
@@ -82,7 +91,6 @@ const SignUpModal = () => {
             Sign Up
           </button>
         </form>
-        {/* <Button kind="secondary">Forgot password?</Button> */}
       </div>
     </div>
   );

@@ -27,7 +27,9 @@ const HomeRight: React.FC<PropsWithChildren> = () => {
           <div className={styles.divider}></div>
           <Modal>
             <Modal.Button>
-              <button className="primaryBtn">Create Account</button>
+              <div className="center">
+                <button className="primaryBtn">Create Account</button>
+              </div>
             </Modal.Button>
             <Modal.Window>
               <SignUpModal></SignUpModal>

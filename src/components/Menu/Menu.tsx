@@ -13,6 +13,8 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 
+import logo from "/logo.png";
+
 const Menu = () => {
   const user = useSelector((state: RootState) => state.user);
   const [showLogout, setShowLogout] = useState(false);
@@ -35,7 +37,9 @@ const Menu = () => {
             }}
             to="/web"
           >
-            <img className={styles.menuLogo} src="logo.png"></img>
+            {/* <Link to="/"> */}
+            <img className={styles.menuLogo} src={logo}></img>
+            {/* </Link> */}
           </NavLink>
         </li>
         <li>

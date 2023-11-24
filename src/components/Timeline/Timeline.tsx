@@ -20,14 +20,16 @@ const Timeline = () => {
   const tweetData =
     data?.length !== 0
       ? data?.map((tweet: ITweet.Tweet) => {
-          return (
-            <Link
-              key={tweet._id}
-              to={`${tweet.user.username}/tweet/${tweet._id}`}
-            >
-              <Tweet data={tweet}></Tweet>
-            </Link>
-          );
+          if (tweet) {
+            return (
+              <Link
+                key={tweet._id}
+                to={`${tweet.user.username}/tweet/${tweet._id}`}
+              >
+                <Tweet data={tweet}></Tweet>
+              </Link>
+            );
+          }
         })
       : "No tweets";
 

@@ -4,9 +4,10 @@ import styles from "./EditProfile.module.css";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import apiFollowAdd from "../../services/apiFollow";
 import { toast } from "react-toastify";
+import apiGetFollowStatus from "../../services/apiGetFollowStatus";
 
 interface Props extends PropsWithChildren {
   err: Error;
@@ -14,9 +15,8 @@ interface Props extends PropsWithChildren {
 }
 
 const EditProfile: React.FC<Props> = ({ err, user }) => {
-  const { userParam } = useParams();
+  const { user: userParam } = useParams();
   const loggedInUserId = useSelector((state) => state.user.user._id);
-
   const mutateQuery = useMutation({
     mutationFn: async (data: Follow.IFollow) => {
       return apiFollowAdd(data);
@@ -27,7 +27,14 @@ const EditProfile: React.FC<Props> = ({ err, user }) => {
       }
     },
   });
-  1;
+
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["followStatus"],
+    queryFn: async () => {
+      return apiGetFollowStatus(userParam);
+    },
+  });
+
   const followHandler = () => {
     mutateQuery.mutate({
       userId: loggedInUserId,
@@ -61,7 +68,9 @@ const EditProfile: React.FC<Props> = ({ err, user }) => {
             disabled={err && true}
             className="primaryBtn"
           >
-            Follow Me
+            {isLoading && !data
+              ? "Checking..."
+              : !isLoading && data?.message && "Followed"}
           </button>
         )}
       </div>

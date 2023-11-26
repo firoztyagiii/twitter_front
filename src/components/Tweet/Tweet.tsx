@@ -1,14 +1,10 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import styles from "./Tweet.module.css";
-import { AiOutlineComment } from "react-icons/ai";
-import { AiOutlineRetweet } from "react-icons/ai";
-import { AiOutlineHeart } from "react-icons/ai";
-import { AiOutlineShareAlt } from "react-icons/ai";
-
-import { BiStats } from "react-icons/bi";
 
 import getTweetTime from "../../utils/getTweetTime";
 import { useSelector } from "react-redux";
+import OperationButton from "./OperationButton/OperationButton";
+import { AiOutlineShareAlt } from "react-icons/ai";
 
 interface Props extends PropsWithChildren {
   data: ITweet.Tweet;
@@ -17,6 +13,10 @@ interface Props extends PropsWithChildren {
 const Tweet: React.FC<Props> = ({ data }) => {
   const tweetTime = getTweetTime(data.createdAt);
   const userImg = useSelector((state) => state.user.user.image);
+
+  const [likes, setLikes] = useState(data.likes);
+
+  console.log(data);
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
@@ -33,25 +33,45 @@ const Tweet: React.FC<Props> = ({ data }) => {
         </div>
         <p className={styles.tweetContent}>{data.content}</p>
         <div className={styles.tweetOperations}>
-          <div className={styles.tweetOperation}>
-            <AiOutlineComment></AiOutlineComment>
-            <p>{data.replies}</p>
-          </div>
-          <div className={styles.tweetOperation}>
-            <AiOutlineRetweet></AiOutlineRetweet>
-            <p>{data.retweet}</p>
-          </div>
-          <div className={styles.tweetOperation}>
-            <AiOutlineHeart></AiOutlineHeart>
-            <p>{data.likes}</p>
-          </div>
-          <div className={styles.tweetOperation}>
-            <BiStats></BiStats>
-            <p>undefined</p>
-          </div>
+          {/* <OperationButton
+            tweet={data}
+            type="comment"
+            content={data.replies}
+            update={setLikes}
+          ></OperationButton>
+          <OperationButton
+            tweet={data}
+            type="retweet"
+            content={data.retweet}
+            update={setLikes}
+          ></OperationButton> */}
+          <OperationButton
+            tweet={data}
+            type="like"
+            update={setLikes}
+            content={likes}
+          ></OperationButton>
           <div className={styles.tweetOperation}>
             <AiOutlineShareAlt></AiOutlineShareAlt>
           </div>
+          {/* <div
+            onClick={stopPropogate}
+            className={`${styles.tweetOperation} ${styles.tweetRetweet}`}
+          >
+            <AiOutlineRetweet></AiOutlineRetweet>
+            <p>{data.retweet}</p>
+          </div>
+          <div
+            onClick={stopPropogate}
+            className={`${styles.tweetOperation} ${styles.tweetLike}`}
+          >
+            <AiOutlineHeart></AiOutlineHeart>
+            <p>{data.likes}</p>
+          </div>
+          <div onClick={stopPropogate} className={styles.tweetOperation}>
+            <BiStats></BiStats>
+            <p>undefined</p>
+          </div> */}
         </div>
       </div>
     </div>

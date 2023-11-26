@@ -42,20 +42,13 @@
   justify-content: space-between;
 }
 
-.tweetOperation {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  color: rgb(71, 71, 71);
+/* .tweetComment:hover {
+  background-color: 1d9bf0;
 }
 
-.tweetOperation svg {
-  font-size: 1.3rem;
-}
-
-.tweetOperation p {
-  font-size: 0.9rem;
-}
+.tweetRetweet:hover {
+  background-color: #2ecc71;
+} */
 
 .tweetName {
   font-weight: bold;

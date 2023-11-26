@@ -12,10 +12,10 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 import { GoBookmark } from "react-icons/go";
 import { Link } from "react-router-dom";
+import OperationButton from "../Tweet/OperationButton/OperationButton";
 
 const TweetInfo = () => {
   const { tweetId } = useParams();
-  console.log(tweetId);
   const { isLoading, data } = useQuery({
     queryFn: async () => apiTweetInfo(tweetId),
     queryKey: ["tweetInfo"],
@@ -47,31 +47,32 @@ const TweetInfo = () => {
                 <p className={styles.tweetInfoUserName}>@{data.user.name}</p>
               </div>
             </div>
-            <p className={styles.tweetInfoContentText}>
-              I need to follow more people. Who am I missing out on?
-            </p>
+            <p className={styles.tweetInfoContentText}>{data.content}</p>
             <div className={styles.tweetInfoContentTime}>
-              <p className={styles.tweetInfoUserTweetTime}>
-                {Date(data.createAt).substring(0, 10)}
-              </p>
+              <p className={styles.tweetInfoUserTweetTime}>{data.createdAt}</p>
               <span>
                 <p>1.2M</p>
                 <p className={styles.view}>Views</p>
               </span>
             </div>
             <div className={styles.tweetInfoOpertions}>
-              <div className={styles.tweetInfoOpertion}>
-                <AiOutlineComment></AiOutlineComment>
-                <p className={styles.tweetInfoOperationCount}>{data.replies}</p>
-              </div>
-              <div className={styles.tweetInfoOpertion}>
-                <AiOutlineRetweet></AiOutlineRetweet>
-                <p className={styles.tweetInfoOperationCount}>{data.retweet}</p>
-              </div>
-              <div className={styles.tweetInfoOpertion}>
-                <AiOutlineHeart></AiOutlineHeart>
-                <p className={styles.tweetInfoOperationCount}>{data.likes}</p>
-              </div>
+              <OperationButton
+                tweet={data}
+                type="comment"
+                content={data.replies}
+              ></OperationButton>
+
+              <OperationButton
+                tweet={data}
+                type="retweet"
+                content={data.retweet}
+              ></OperationButton>
+              <OperationButton
+                tweet={data}
+                type="like"
+                content={data.likes}
+              ></OperationButton>
+
               <div className={styles.tweetInfoOpertion}>
                 <GoBookmark></GoBookmark>
                 <p className={styles.tweetInfoOperationCount}></p>

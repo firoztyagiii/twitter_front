@@ -1,0 +1,43 @@
+.tweetOperation {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgb(71, 71, 71);
+  z-index: 5;
+}
+
+.tweetOperation:hover {
+  cursor: pointer;
+}
+
+.tweetOperation svg {
+  font-size: 1.3rem;
+}
+
+.tweetOperation p {
+  font-size: 0.9rem;
+}
+
+.tweetComment:hover p {
+  color: #1d9bf0;
+}
+
+.tweetComment:hover svg {
+  color: #1d9bf0;
+}
+
+.tweetLike:hover p {
+  color: #eb6d60;
+}
+
+.tweetLike:hover svg {
+  color: #eb6d60;
+}
+
+.tweetRetweet:hover p {
+  color: #2ecc71;
+}
+
+.tweetRetweet:hover svg {
+  color: #2ecc71;
+}

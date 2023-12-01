@@ -2,17 +2,18 @@ import { HOST } from "../utils/host";
 
 const apiPostTweet = async (content) => {
   try {
+    const form = new FormData();
+    form.append("image", content.media);
+    form.append("tweet", content.tweet);
+
     const response = await fetch(`${HOST}/api/v1/tweet`, {
       method: "POST",
       credentials: "include",
-      body: JSON.stringify({
-        content: content,
-      }),
+      body: { content: form },
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
     });
-    console.log(response);
     if (!response.ok) {
       throw new Error("Unable to tweet, Please try again later...");
     }

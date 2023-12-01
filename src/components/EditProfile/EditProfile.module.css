@@ -66,3 +66,21 @@
   font-weight: bold;
   color: black;
 }
+
+.followBtn {
+  background-color: var(--primary-color);
+  outline: none;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  text-align: center;
+  align-items: center;
+}
+
+.followBtn:hover {
+  cursor: pointer;
+  background-color: var(--primary-color-hover);
+}

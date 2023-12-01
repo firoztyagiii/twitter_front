@@ -16,6 +16,7 @@
   background-color: #fff;
   padding: 1.5rem 2rem;
   border-radius: 10px;
+  min-width: 50%;
 }
 
 .modalBody span svg {

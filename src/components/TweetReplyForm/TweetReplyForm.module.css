@@ -1,0 +1,68 @@
+.tweetReplyForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 2rem;
+}
+
+.tweetReplyFormText {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  align-items: center;
+}
+
+.tweetReplyFormImg {
+  display: flex;
+  gap: 1rem;
+}
+
+.tweetReplyFormImage {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.border {
+  display: block;
+  width: 3px;
+  background-color: var(--fine-line);
+  height: 3rem;
+}
+
+.tweetReplyFormUserName {
+  font-weight: 500;
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.tweetReplyFormUserName span {
+  color: rgb(141, 141, 141);
+  font-weight: 200;
+}
+
+.tweetReplyFormUserContent {
+  padding-bottom: 1.6rem;
+  font-size: 0.95rem;
+}
+
+.tweetReplyFormUserReply {
+  color: rgb(141, 141, 141);
+}
+
+.tweetReplyFormUserReply span {
+  color: var(--primary-color);
+}
+
+.replyInput {
+  border: none;
+  outline: none;
+  padding: 0.6rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.tweetReplySubmit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

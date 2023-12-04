@@ -35,7 +35,6 @@ const Profile = ({ userParams }) => {
           <EditProfile err={error} user={data}></EditProfile>
         </>
       )}
-      {/* <Tweet></Tweet> */}
       <Outlet></Outlet>
     </div>
   );

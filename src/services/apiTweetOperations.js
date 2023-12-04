@@ -1,17 +1,15 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiLikeTweet = async (tweetId) => {
   try {
-    const response = await fetch(`${HOST}/api/v1/like/${tweetId}/add`, {
-      method: "POST",
-    });
-    if (!response.ok) {
-      throw new Error("Something went wrong");
-    }
-    const res = await response.json();
-    return res;
+    const res = await axios.post(`${HOST}/api/v1/like/${tweetId}/add`);
+    return res.data;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

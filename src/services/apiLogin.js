@@ -1,22 +1,26 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiLogin = async (email, password) => {
   try {
-    const response = await fetch(`${HOST}/api/v1/user/login`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
+    const res = await axios.post(
+      `${HOST}/api/v1/user/login`,
+      {
+        email,
+        password,
       },
-      body: JSON.stringify({ email, password }),
-      credentials: "include",
-    });
-    if (!response.ok) {
-      throw new Error("Invalid credentials");
-    }
-    const res = await response.json();
-    return res;
+      {
+        headers: {
+          credentials: "include",
+        },
+      }
+    );
+    return res.data;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

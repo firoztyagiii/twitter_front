@@ -1,15 +1,15 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiGetTimeline = async () => {
   try {
-    const response = await fetch(`${HOST}/api/v1/user/timeline`);
-    if (!response.ok) {
-      throw new Error("Something went wrong!!");
-    }
-    const res = await response.json();
-    return res.data;
+    const res = await axios.get(`${HOST}/api/v1/user/timeline`);
+    return res.data.data;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

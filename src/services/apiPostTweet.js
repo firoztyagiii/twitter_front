@@ -1,26 +1,22 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiPostTweet = async (content) => {
   try {
     const form = new FormData();
     form.append("image", content.media);
-    form.append("tweet", content.tweet);
+    form.append("content", content.tweet);
 
-    const response = await fetch(`${HOST}/api/v1/tweet`, {
-      method: "POST",
-      credentials: "include",
-      body: { content: form },
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+    const res = await axios.post(`${HOST}/api/v1/tweet`, form, {
+      headers: { credentials: "include" },
     });
-    if (!response.ok) {
-      throw new Error("Unable to tweet, Please try again later...");
-    }
-    const tweet = await response.json();
-    return tweet;
+
+    return res.data;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

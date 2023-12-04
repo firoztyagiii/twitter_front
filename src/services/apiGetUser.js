@@ -1,15 +1,15 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiGetUser = async (user) => {
   try {
-    const response = await fetch(`${HOST}/api/v1/user/${user}`);
-    if (!response.ok) {
-      throw new Error("Could not find the user");
-    }
-    const res = await response.json();
-    return res.data.user;
+    const res = await axios.get(`${HOST}/api/v1/user/${user}`);
+    return res.data.data.user;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

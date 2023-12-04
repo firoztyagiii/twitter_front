@@ -1,15 +1,16 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiGetFollowStatus = async (followId) => {
   try {
-    const response = await fetch(`${HOST}/api/v1/follow/${followId}/status`);
-    if (!response.ok) {
-      throw new Error("Something went wrong");
-    }
-    const res = await response.json();
-    return res;
+    const res = await axios.get(`${HOST}/api/v1/follow/${followId}/status`);
+
+    return res.data;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

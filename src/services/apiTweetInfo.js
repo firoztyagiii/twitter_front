@@ -1,15 +1,15 @@
+import axios from "axios";
 import { HOST } from "../utils/host";
+import { toast } from "react-toastify";
 
 const apiTweetInfo = async (id) => {
   try {
-    const response = await fetch(`${HOST}/api/v1/tweet/${id}`);
-    if (!response.ok) {
-      throw new Error("Something went wrong");
-    }
-    const tweet = await response.json();
-    return tweet.data.tweet;
+    const res = await axios.get(`${HOST}/api/v1/tweet/${id}`);
+    return res.data.tweet;
   } catch (err) {
-    throw err;
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+    }
   }
 };
 

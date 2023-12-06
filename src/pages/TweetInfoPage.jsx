@@ -1,20 +1,19 @@
-import { Outlet, useParams } from "react-router-dom";
 import Row from "../UI/Row/Row";
 import WebLayout from "../UI/WebLayout/WebLayout";
 import Explore from "../components/Explore/Explore";
 import Menu from "../components/Menu/Menu";
-import Timeline from "../components/Timeline/Timeline";
+import TweetInfo from "../components/TweetInfo/TweetInfo";
 
-const Web = () => {
+const TweetInfoPage = () => {
   return (
     <Row>
       <WebLayout>
         <Menu></Menu>
-        <Timeline></Timeline>
+        <TweetInfo></TweetInfo>
         <Explore></Explore>
       </WebLayout>
     </Row>
   );
 };
 
-export default Web;
+export default TweetInfoPage;

@@ -102,6 +102,7 @@ const TweetInput = () => {
           <button
             onClick={() => {
               mutate({ tweet: tweetInput, media: imageBlob });
+              setTweetPrevImg();
             }}
             disabled={(percentage > 99 && true) || percentage === 0}
             className="primaryBtn"

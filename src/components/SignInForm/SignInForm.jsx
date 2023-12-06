@@ -19,15 +19,14 @@ const SignInForm = () => {
 
   const { mutate, isLoading } = useMutation({
     mutationFn: () => apiLogin(email, password),
-    onError: (err) => {
-      toast.error(err.message);
-      reset();
-    },
+
     onSuccess: (data) => {
-      toast.success(data.message || "Logged in successfully");
-      disptach(login(data.data.user));
-      navigate("/web");
-      reset();
+      if (data.status === "success") {
+        toast.success("Logged in successfully");
+        disptach(login(data.data.user));
+        navigate("/web");
+        reset();
+      }
     },
   });
 

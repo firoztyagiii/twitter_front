@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { useQuery } from "react-query";
 import apiAboutMe from "../../services/apiAboutMe";
 import { login } from "../../store/slices/userSlice";
-import { toast } from "react-toastify";
 
 const Auth = ({ children }) => {
   const dispatch = useDispatch();

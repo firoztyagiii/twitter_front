@@ -13,9 +13,11 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { GoBookmark } from "react-icons/go";
 import { Link } from "react-router-dom";
 import OperationButton from "../Tweet/OperationButton/OperationButton";
+import { HOST } from "../../utils/host";
 
 const TweetInfo = () => {
   const { tweetId } = useParams();
+
   const { isLoading, data } = useQuery({
     queryFn: async () => apiTweetInfo(tweetId),
     queryKey: ["tweetInfo"],
@@ -48,6 +50,12 @@ const TweetInfo = () => {
               </div>
             </div>
             <p className={styles.tweetInfoContentText}>{data.content}</p>
+            {data.media && (
+              <img
+                className={styles.tweetMedia}
+                src={`${HOST}/${data.media}`}
+              ></img>
+            )}
             <div className={styles.tweetInfoContentTime}>
               <p className={styles.tweetInfoUserTweetTime}>{data.createdAt}</p>
               <span>

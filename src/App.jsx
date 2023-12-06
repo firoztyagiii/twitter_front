@@ -12,8 +12,8 @@ import Auth from "./components/Auth/Auth";
 import Settings from "./pages/Settings";
 import YourAccount from "./components/SettingsOptions/YourAccount/YourAccount";
 import Security from "./components/SettingsOptions/Security/Security";
-import TweetInfo from "./components/TweetInfo/TweetInfo";
 import UserTweet from "./components/Profile/UserTweet/UserTweet";
+import TweetInfoPage from "./pages/TweetInfoPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,12 +31,11 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Home></Home>}></Route>
-              <Route path="/web" element={<Web></Web>}>
-                <Route
-                  path=":username/tweet/:tweetId"
-                  element={<TweetInfo></TweetInfo>}
-                ></Route>
-              </Route>
+              <Route path="/web" element={<Web></Web>}></Route>
+              <Route
+                path="/web/:username/tweet/:tweetId"
+                element={<TweetInfoPage></TweetInfoPage>}
+              ></Route>
               <Route path="/settings" element={<Settings></Settings>}>
                 <Route
                   path="account"

@@ -7,12 +7,12 @@ import OperationButton from "./OperationButton/OperationButton";
 import { AiOutlineShareAlt } from "react-icons/ai";
 import Modal from "../../UI/Modal/Modal";
 import TweetReplyForm from "../TweetReplyForm/TweetReplyForm";
+import { HOST } from "../../utils/host";
 
 const Tweet = ({ data }) => {
   const tweetTime = getTweetTime(data.createdAt);
   const userImg = useSelector((state) => state.user.user.image);
   const [likes, setLikes] = useState(data.likes);
-
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
@@ -28,6 +28,12 @@ const Tweet = ({ data }) => {
           <p className={styles.tweetTime}>{tweetTime}</p>
         </div>
         <p className={styles.tweetContent}>{data.content}</p>
+        {data.media && (
+          <img
+            className={styles.tweetMedia}
+            src={`${HOST}/${data.media}`}
+          ></img>
+        )}
         <div className={styles.tweetOperations}>
           <Modal>
             <Modal.Button>

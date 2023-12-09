@@ -4,7 +4,10 @@ import { AiOutlineRetweet } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useMutation } from "react-query";
 
-import { apiLikeTweet } from "../../../services/apiTweetOperations";
+import {
+  apiLikeTweet,
+  apiReplyTweet,
+} from "../../../services/apiTweetOperations";
 
 const OperationButton = ({
   content,
@@ -15,22 +18,27 @@ const OperationButton = ({
 }) => {
   const mutationQuery = useMutation({
     mutationKey: ["like"],
-    mutationFn: async () => {
-      return apiLikeTweet(tweet._id);
+    mutationFn: async (_id) => {
+      return apiLikeTweet(_id);
     },
-    onSuccess: () => {
+
+    onError: () => {},
+
+    onSuccess: (data) => {
       const updatedCount = tweet.likes + 1;
       update(updatedCount);
     },
   });
 
+  // const replyMutationQuery = useMutation({
+  //   mutationFn: async (tweetId) => {
+  //     return apiReplyTweet(tweetId);
+  //   },
+  // });
+
   const stopPropogate = (e) => {
     e.stopPropagation();
     e.preventDefault();
-    // if (type === "like") {
-    //   mutationQuery.mutate();
-    // }
-    console.log("CLICKED ON OPERATION BUTTON...");
   };
 
   let style = "";
@@ -49,8 +57,13 @@ const OperationButton = ({
 
   return (
     <div
-      onClick={(e) => {
+      onClick={async (e) => {
         stopPropogate(e);
+
+        if (type === "like") {
+          mutationQuery.mutate(tweet._id);
+        }
+
         if (showFormHandler) {
           showFormHandler();
         }

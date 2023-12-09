@@ -9,8 +9,21 @@ const apiLikeTweet = async (tweetId) => {
   } catch (err) {
     if (err.isAxiosError) {
       toast.error(err.response.data.message);
+      throw new Error(err.response.data.message);
     }
   }
 };
 
-export { apiLikeTweet };
+const apiReplyTweet = async (tweetId) => {
+  try {
+    const res = await axios.post(`${HOST}/api/v1/tweet/${tweetId}/reply`);
+    return res.data;
+  } catch (err) {
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+      throw new Error(err.response.data.message);
+    }
+  }
+};
+
+export { apiLikeTweet, apiReplyTweet };

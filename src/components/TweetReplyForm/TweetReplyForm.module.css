@@ -58,7 +58,10 @@
   outline: none;
   padding: 0.6rem;
   width: 100%;
-  font-size: 1.2rem;
+  letter-spacing: 0px;
+  font-family: inherit;
+  font-size: 1rem;
+  align-items: center;
 }
 
 .tweetReplySubmit {

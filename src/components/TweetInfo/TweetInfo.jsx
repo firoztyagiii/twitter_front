@@ -29,7 +29,7 @@ const TweetInfo = () => {
       {!isLoading && data && (
         <div className={styles.tweetInfoUser}>
           <div className={styles.tweetInfoBack}>
-            <Link to="..">
+            <Link to="../">
               <AiOutlineArrowLeft></AiOutlineArrowLeft>
             </Link>
             <p>Post</p>

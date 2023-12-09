@@ -6,7 +6,7 @@
   border-radius: 9999px;
   color: #fff;
   font-size: 0.9rem;
-  /* width: 4.5rem; */
+  width: 4.5rem;
   transition: all 0.3s;
 }
 
@@ -23,13 +23,13 @@
   color: black;
   background-color: #fff;
   font-size: 0.9rem;
-  width: 100%;
   border: var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s;
+  width: 100%;
 }
 
 .loginBtn:hover {

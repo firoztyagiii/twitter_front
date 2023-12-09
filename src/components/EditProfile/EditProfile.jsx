@@ -4,13 +4,13 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useMutation, useQuery } from "react-query";
-import apiFollowAdd from "../../services/apiFollow";
+import { apiFollowAdd } from "../../services/apiFollow";
 import { toast } from "react-toastify";
 import apiGetFollowStatus from "../../services/apiGetFollowStatus";
 
 const EditProfile = ({ err, user }) => {
   const { user: userParam } = useParams();
-  const { username, _id } = useSelector((state) => state.user.user);
+  const { _id } = useSelector((state) => state.user.user);
 
   const mutateQuery = useMutation({
     mutationFn: async (data) => {
@@ -32,10 +32,12 @@ const EditProfile = ({ err, user }) => {
   });
 
   const followHandler = () => {
-    mutateQuery.mutate({
-      userId: _id,
-      followId: user._id.toString(),
-    });
+    if (!data.message) {
+      mutateQuery.mutate({
+        userId: _id,
+        followId: user._id,
+      });
+    }
   };
 
   return (
@@ -54,8 +56,12 @@ const EditProfile = ({ err, user }) => {
       </div>
       <div className={styles.editProfileImgBtn}>
         <div></div>
-        <button className={styles.followBtn}>
-          {username === userParam ? "Edit Profile" : " Follow"}
+        <button onClick={followHandler} className={styles.followBtn}>
+          {isLoading
+            ? "Fetching..."
+            : !isLoading && data.message
+            ? "Unfollow"
+            : "Follow"}
         </button>
       </div>
       <div className={styles.editProfileDetails}>

@@ -8,11 +8,11 @@ import classes from "../../UI/Button/Button.module.css";
 import { toast } from "react-toastify";
 
 const SignUpModal = () => {
-  const [email, setEmail] = useState("aydenjack1@gmail.com");
-  const [password, setPassword] = useState("123456789");
-  const [confirmPassword, setConfirmPassword] = useState("123456789");
-  const [username, setUsername] = useState("aydenjack");
-  const [name, setName] = useState("ayden");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
 
   const reset = () => {
     setEmail("");

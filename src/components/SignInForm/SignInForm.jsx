@@ -14,8 +14,8 @@ import { login } from "../../store/slices/userSlice";
 const SignInForm = () => {
   const disptach = useDispatch();
   const navigate = useNavigate();
-  const [email, setEmail] = useState("andrew@gmail.com");
-  const [password, setPassword] = useState("123456789");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const { mutate, isLoading } = useMutation({
     mutationFn: () => apiLogin(email, password),

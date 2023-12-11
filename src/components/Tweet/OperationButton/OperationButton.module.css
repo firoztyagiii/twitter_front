@@ -1,8 +1,9 @@
 .tweetOperation {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   color: rgb(71, 71, 71);
+  gap: 0.6rem;
+
   z-index: 5;
 }
 
@@ -40,4 +41,18 @@
 
 .tweetRetweet:hover svg {
   color: #2ecc71;
+}
+
+.tweetOperationBg {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tweetOperationFinish p {
+  color: #eb6d60;
+}
+
+.tweetOperationFinish svg {
+  color: #eb6d60;
 }

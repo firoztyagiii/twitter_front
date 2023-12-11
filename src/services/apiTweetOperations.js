@@ -8,15 +8,17 @@ const apiLikeTweet = async (tweetId) => {
     return res.data;
   } catch (err) {
     if (err.isAxiosError) {
-      toast.error(err.response.data.message);
+      // toast.error(err.response.data.message);
       throw new Error(err.response.data.message);
     }
   }
 };
 
-const apiReplyTweet = async (tweetId) => {
+const apiReplyTweet = async (data) => {
   try {
-    const res = await axios.post(`${HOST}/api/v1/tweet/${tweetId}/reply`);
+    const res = await axios.post(`${HOST}/api/v1/tweet/${data.tweetId}/reply`, {
+      content: data.reply,
+    });
     return res.data;
   } catch (err) {
     if (err.isAxiosError) {
@@ -26,4 +28,16 @@ const apiReplyTweet = async (tweetId) => {
   }
 };
 
-export { apiLikeTweet, apiReplyTweet };
+const apiGetReplies = async (tweetId) => {
+  try {
+    const res = await axios.get(`${HOST}/api/v1/reply/${tweetId}`);
+    return res.data.data.replies;
+  } catch (err) {
+    if (err.isAxiosError) {
+      toast.error(err.response.data.message);
+      throw new Error(err.response.data.message);
+    }
+  }
+};
+
+export { apiLikeTweet, apiReplyTweet, apiGetReplies };

@@ -8,6 +8,7 @@ import {
   apiLikeTweet,
   apiReplyTweet,
 } from "../../../services/apiTweetOperations";
+import { useState } from "react";
 
 const OperationButton = ({
   content,
@@ -16,7 +17,9 @@ const OperationButton = ({
   onClick: showFormHandler,
   update,
 }) => {
-  const mutationQuery = useMutation({
+  const [likeStyle, setLikeStyle] = useState("");
+
+  const likeMutationQuery = useMutation({
     mutationKey: ["like"],
     mutationFn: async (_id) => {
       return apiLikeTweet(_id);
@@ -27,6 +30,7 @@ const OperationButton = ({
     onSuccess: (data) => {
       const updatedCount = tweet.likes + 1;
       update(updatedCount);
+      setLikeStyle(styles.tweetOperationFinish);
     },
   });
 
@@ -61,7 +65,7 @@ const OperationButton = ({
         stopPropogate(e);
 
         if (type === "like") {
-          mutationQuery.mutate(tweet._id);
+          likeMutationQuery.mutate(tweet._id);
         }
 
         if (showFormHandler) {
@@ -70,8 +74,11 @@ const OperationButton = ({
       }}
       className={`${styles.tweetOperation} ${style}`}
     >
-      <Icon></Icon>
-      <p>{content}</p>
+      <span className={`${styles.tweetOperationBg} ${likeStyle}`}>
+        {/* <span className={styles["tweetOperationBg tweetOperationFinish"]}> */}
+        <p>{content}</p>
+        <Icon></Icon>
+      </span>
     </div>
   );
 };

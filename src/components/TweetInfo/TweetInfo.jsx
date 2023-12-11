@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styles from "./TweetInfo.module.css";
-import { useQuery } from "react-query";
+import { useQueries, useQuery } from "react-query";
 import apiTweetInfo from "../../services/apiTweetInfo";
 import Spinner from "../../UI/Spinner/Spinner";
 
@@ -14,13 +14,24 @@ import { GoBookmark } from "react-icons/go";
 import { Link } from "react-router-dom";
 import OperationButton from "../Tweet/OperationButton/OperationButton";
 import { HOST } from "../../utils/host";
+import { apiGetReplies } from "../../services/apiTweetOperations";
+import Tweet from "../Tweet/Tweet";
+import Modal from "../../UI/Modal/Modal";
+import { useState } from "react";
+import TweetReplyForm from "../TweetReplyForm/TweetReplyForm";
 
 const TweetInfo = () => {
   const { tweetId } = useParams();
+  const [likes, setLikes] = useState(0);
 
   const { isLoading, data } = useQuery({
     queryFn: async () => apiTweetInfo(tweetId),
     queryKey: ["tweetInfo"],
+  });
+
+  const replyData = useQuery({
+    queryFn: async () => apiGetReplies(tweetId),
+    queryKey: ["tweetReply"],
   });
 
   return (
@@ -64,34 +75,46 @@ const TweetInfo = () => {
               </span>
             </div>
             <div className={styles.tweetInfoOpertions}>
-              <OperationButton
-                tweet={data}
-                type="comment"
-                content={data.replies}
-              ></OperationButton>
+              <Modal>
+                <Modal.Button>
+                  <OperationButton
+                    tweet={data}
+                    type="comment"
+                    content={data.replies}
+                    update={setLikes}
+                  ></OperationButton>
+                </Modal.Button>
+
+                <Modal.Window>
+                  <TweetReplyForm tweet={data}></TweetReplyForm>
+                </Modal.Window>
+              </Modal>
 
               <OperationButton
                 tweet={data}
                 type="retweet"
                 content={data.retweet}
+                update={setLikes}
               ></OperationButton>
               <OperationButton
                 tweet={data}
                 type="like"
-                content={data.likes}
+                update={setLikes}
+                content={likes}
               ></OperationButton>
-
-              <div className={styles.tweetInfoOpertion}>
-                <GoBookmark></GoBookmark>
-                <p className={styles.tweetInfoOperationCount}></p>
-              </div>
-              <div className={styles.tweetInfoOpertion}>
+              <div className={styles.tweetOperation}>
                 <AiOutlineShareAlt></AiOutlineShareAlt>
               </div>
             </div>
           </div>
         </div>
       )}
+      {replyData.isLoading && <Spinner></Spinner>}
+      {!replyData.isLoading &&
+        replyData.data &&
+        replyData.data.map((tweet) => {
+          return <Tweet key={tweet._id} data={tweet}></Tweet>;
+        })}
     </div>
   );
 };

@@ -8,12 +8,14 @@ const TweetReplyForm = (props) => {
   const [reply, setReply] = useState("");
 
   const mutationQuery = useMutation({
-    mutationFn: async () => {
-      return apiReplyTweet(props.tweet._id);
+    mutationFn: async (data) => {
+      return apiReplyTweet(data);
     },
   });
 
-  const replyHandler = () => {};
+  const replyHandler = () => {
+    mutationQuery.mutate({ tweetId: props.tweet._id, reply });
+  };
 
   return (
     <div className={styles.tweetReplyForm}>
@@ -44,20 +46,15 @@ const TweetReplyForm = (props) => {
           className={styles.replyInput}
           type="text"
           placeholder="Post your reply"
+          value={reply}
           onChange={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
             setReply(e.target.value);
-          }}
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
           }}
         ></textarea>
       </div>
       <div className={styles.tweetReplySubmit}>
         <div></div>
-        <Button onclick={mutationQuery.mutate(reply)} kind="primary">
+        <Button onclick={replyHandler} kind="primary">
           Reply
         </Button>
       </div>

@@ -13,6 +13,7 @@ const Tweet = ({ data }) => {
   const tweetTime = getTweetTime(data.createdAt);
   const userImg = useSelector((state) => state.user.user.image);
   const [likes, setLikes] = useState(data.likes);
+
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>

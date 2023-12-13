@@ -60,4 +60,5 @@ const Window = ({ children }) => {
 Modal.Button = Button;
 Modal.Window = Window;
 
+export { ModalContext };
 export default Modal;

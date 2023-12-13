@@ -56,3 +56,11 @@
 .tweetOperationFinish svg {
   color: #eb6d60;
 }
+
+.liked p {
+  color: #eb6d60;
+}
+
+.liked svg {
+  color: #eb6d60;
+}

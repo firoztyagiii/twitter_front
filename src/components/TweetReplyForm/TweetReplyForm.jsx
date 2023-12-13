@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./TweetReplyForm.module.css";
 import Button from "../../UI/Button/Button";
 import { useMutation } from "react-query";
 import { apiReplyTweet } from "../../services/apiTweetOperations";
+import { ModalContext } from "../../UI/Modal/Modal";
 
 const TweetReplyForm = (props) => {
   const [reply, setReply] = useState("");
+  const { showHandler } = useContext(ModalContext);
 
   const mutationQuery = useMutation({
     mutationFn: async (data) => {
       return apiReplyTweet(data);
+    },
+    onSuccess: () => {
+      showHandler();
     },
   });
 

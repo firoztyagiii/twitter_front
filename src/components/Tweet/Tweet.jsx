@@ -62,6 +62,7 @@ const Tweet = ({ data }) => {
             type="like"
             update={setLikes}
             content={likes}
+            liked={data.isLiked}
           ></OperationButton>
           <div className={styles.tweetOperation}>
             <AiOutlineShareAlt></AiOutlineShareAlt>

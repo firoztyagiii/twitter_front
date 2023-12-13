@@ -16,6 +16,7 @@ const OperationButton = ({
   tweet,
   onClick: showFormHandler,
   update,
+  liked,
 }) => {
   const [likeStyle, setLikeStyle] = useState("");
 
@@ -74,8 +75,11 @@ const OperationButton = ({
       }}
       className={`${styles.tweetOperation} ${style}`}
     >
-      <span className={`${styles.tweetOperationBg} ${likeStyle}`}>
-        {/* <span className={styles["tweetOperationBg tweetOperationFinish"]}> */}
+      <span
+        className={`${styles.tweetOperationBg} ${
+          liked && styles.liked
+        } ${likeStyle}`}
+      >
         <p>{content}</p>
         <Icon></Icon>
       </span>

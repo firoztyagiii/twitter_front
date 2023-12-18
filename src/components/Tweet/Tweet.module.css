@@ -31,9 +31,21 @@
 }
 
 .tweetContainerUser {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.7rem;
+}
+
+.tweetRepost {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tweetRepost p {
+  color: var(--light-color-text);
+  font-size: 0.9rem;
 }
 
 .tweetOperations {

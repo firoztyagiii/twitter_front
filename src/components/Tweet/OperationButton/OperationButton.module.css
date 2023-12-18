@@ -64,3 +64,11 @@
 .liked svg {
   color: #eb6d60;
 }
+
+.tweetOperationUnlike p {
+  color: inherit;
+}
+
+.tweetOperationUnlike svg {
+  color: inherit;
+}

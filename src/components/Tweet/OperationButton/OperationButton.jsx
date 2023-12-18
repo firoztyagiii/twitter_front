@@ -2,11 +2,13 @@ import styles from "./OperationButton.module.css";
 import { AiOutlineComment } from "react-icons/ai";
 import { AiOutlineRetweet } from "react-icons/ai";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 
 import {
   apiLikeTweet,
   apiReplyTweet,
+  apiRepost,
+  apiUnlikeTweet,
 } from "../../../services/apiTweetOperations";
 import { useState } from "react";
 
@@ -18,6 +20,7 @@ const OperationButton = ({
   update,
   liked,
 }) => {
+  const queryClient = useQueryClient();
   const [likeStyle, setLikeStyle] = useState("");
 
   const likeMutationQuery = useMutation({
@@ -26,12 +29,32 @@ const OperationButton = ({
       return apiLikeTweet(_id);
     },
 
-    onError: () => {},
-
     onSuccess: (data) => {
       const updatedCount = tweet.likes + 1;
       update(updatedCount);
+      queryClient.invalidateQueries({ queryKey: ["timeline"] });
       setLikeStyle(styles.tweetOperationFinish);
+    },
+  });
+
+  const unlikeMutationQuery = useMutation({
+    mutationFn: async (_id) => {
+      return apiUnlikeTweet(_id);
+    },
+    onSuccess: () => {
+      const updatedCount = tweet.likes - 1;
+      update(updatedCount);
+      queryClient.invalidateQueries({ queryKey: ["timeline"] });
+      setLikeStyle(styles.tweetOperationUnlike);
+    },
+  });
+
+  const repostMutationQuery = useMutation({
+    mutationFn: async (_id) => {
+      return apiRepost(_id);
+    },
+    onSuccess: (data) => {
+      console.log("REPOST ===>", data);
     },
   });
 
@@ -65,8 +88,16 @@ const OperationButton = ({
       onClick={async (e) => {
         stopPropogate(e);
 
-        if (type === "like") {
+        if (type === "like" && !tweet.isLiked) {
           likeMutationQuery.mutate(tweet._id);
+        }
+
+        if (type === "like" && tweet.isLiked) {
+          unlikeMutationQuery.mutate(tweet._id);
+        }
+
+        if (type === "retweet") {
+          repostMutationQuery.mutate(tweet._id);
         }
 
         if (showFormHandler) {

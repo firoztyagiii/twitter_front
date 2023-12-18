@@ -14,6 +14,8 @@ import YourAccount from "./components/SettingsOptions/YourAccount/YourAccount";
 import Security from "./components/SettingsOptions/Security/Security";
 import UserTweet from "./components/Profile/UserTweet/UserTweet";
 import TweetInfoPage from "./pages/TweetInfoPage";
+import AccountInfo from "./components/AccountInfo/AccountInfo";
+import ChangePassword from "./components/ChangePassword/ChangePassord";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +42,14 @@ const App = () => {
                 <Route
                   path="account"
                   element={<YourAccount></YourAccount>}
+                ></Route>
+                <Route
+                  path="account/information"
+                  element={<AccountInfo></AccountInfo>}
+                ></Route>
+                <Route
+                  path="account/password"
+                  element={<ChangePassword></ChangePassword>}
                 ></Route>
                 <Route path="security" element={<Security></Security>}></Route>
                 <Route path="privacy" element={<p>privacy</p>}></Route>

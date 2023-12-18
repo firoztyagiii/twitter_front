@@ -1,0 +1,43 @@
+.accountInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.pad {
+  padding: 1rem;
+}
+
+.accountInfoBack {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.accountInfoBack svg {
+  font-size: 1.3rem;
+}
+
+.accountInfoBack svg:hover {
+  cursor: pointer;
+}
+
+.accountInfoBack p {
+  font-size: 1.2rem;
+}
+
+.accountInfoConfirm {
+  font-size: 0.9rem;
+  color: var(--light-color-text);
+}
+
+.accountInfoBtn {
+  width: 30%;
+  align-self: flex-end;
+}
+
+.invalid {
+  font-size: 0.9rem;
+  color: var(--invalid);
+}

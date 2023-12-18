@@ -1,12 +1,13 @@
 import { useContext, useState } from "react";
 import styles from "./TweetReplyForm.module.css";
 import Button from "../../UI/Button/Button";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { apiReplyTweet } from "../../services/apiTweetOperations";
 import { ModalContext } from "../../UI/Modal/Modal";
 
 const TweetReplyForm = (props) => {
   const [reply, setReply] = useState("");
+  const queryClient = useQueryClient();
   const { showHandler } = useContext(ModalContext);
 
   const mutationQuery = useMutation({
@@ -14,6 +15,7 @@ const TweetReplyForm = (props) => {
       return apiReplyTweet(data);
     },
     onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["timeline"] });
       showHandler();
     },
   });

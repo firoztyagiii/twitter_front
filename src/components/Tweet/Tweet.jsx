@@ -8,12 +8,13 @@ import { AiOutlineShareAlt } from "react-icons/ai";
 import Modal from "../../UI/Modal/Modal";
 import TweetReplyForm from "../TweetReplyForm/TweetReplyForm";
 import { HOST } from "../../utils/host";
+import { BiRepost } from "react-icons/bi";
 
 const Tweet = ({ data }) => {
   const tweetTime = getTweetTime(data.createdAt);
   const userImg = useSelector((state) => state.user.user.image);
   const [likes, setLikes] = useState(data.likes);
-
+  console.log(data.retweet);
   return (
     <div className={styles.tweet}>
       <div className={styles.tweetImgContainer}>
@@ -27,6 +28,12 @@ const Tweet = ({ data }) => {
           <p className={styles.tweetName}>{data.user.name}</p>
           <p className={styles.tweetUsername}>@{data.user.username}</p>
           <p className={styles.tweetTime}>{tweetTime}</p>
+          {data.repost && (
+            <span className={styles.tweetRepost}>
+              <BiRepost></BiRepost>
+              <p>You reposted</p>
+            </span>
+          )}
         </div>
         <p className={styles.tweetContent}>{data.content}</p>
         {data.media && (
